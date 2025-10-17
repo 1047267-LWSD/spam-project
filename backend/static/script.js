@@ -4,7 +4,7 @@
     const shapped = document.createElement('p');
     async function submit() {
         try {
-            const response = await fetch('/predict', {
+            const response = await fetch('/predict/detect', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
