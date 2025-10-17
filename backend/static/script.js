@@ -2,6 +2,7 @@
     const text = document.createElement('p');
     const button = document.getElementById('detect');
     const shapped = document.createElement('p');
+    const img = document.get
     async function submit() {
         try {
             const response = await fetch('/predict/detect', {
