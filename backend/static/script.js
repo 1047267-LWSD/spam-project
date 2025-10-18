@@ -43,15 +43,14 @@
             const data = await response.json();
             text.textContent = `Prediction: ${data.prediction}, Confidence: ${(data.confidence*100).toFixed(2)}%, Spam Type: ${data.type}`;
             const word_contributions = data.word_contributions;
-            let words = textToSend.split(' ');
+            let words = textToSend.split(/[\s\-\/,;:.!?()]+/);
+            console.log(words)
             let highlightedText = words.map(word => {
                 let cleanWord = word.toLowerCase().replace(/[^\w]/g, '');
+                console.log(`Original: "${word}", Clean: "${cleanWord}", Has contribution: ${!!word_contributions[cleanWord]}, Value: ${word_contributions[cleanWord]}`);
                 if(word_contributions[cleanWord] && word_contributions[cleanWord] > 0) {
                     return `<span style="background-color: yellow">${cleanWord}</span>`;
                 }
-                // else if(word_contributions[word]>0.5) {
-                //     return `<span style="background-color: red">${word}</span>`;
-                // }
                 else {
                     return word;
                 }
