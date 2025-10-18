@@ -9,11 +9,11 @@
     <h1>Spam Detection stuff</h1>
     <form>
     <input type="file" id="myFile" name="filename">
-    <input type="submit" id = 'submit'>
+    <button type="button" id="upload">Upload</button>
     </form>
     <label for = 'spam-input'>Spam detector stuff</label>
     <input type = 'text' id = 'spam-input' name = 'spam-input'>
-    <button id = 'detect'> Submit Message</button>
+    <button id = 'check'> Submit Message</button>
 </body>
 <script src="{{ url_for('static', filename='script.js') }}?v=2"></script>
 </html>

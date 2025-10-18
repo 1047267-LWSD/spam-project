@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, secure_filename
+from flask import Flask, render_template, request, jsonify
 from waitress import serve 
 from pipeline import spam_detect
 from ocr import img_to_text

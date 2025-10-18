@@ -26,3 +26,6 @@ v_filename = 'detector-vectorizer.pkl'
 with open(v_filename, 'wb') as f:
     pkl.dump(vectorizer, f)
 
+text_vectorized = vectorizer.transform(["Thank you for your submission! Here is some feedback on your paper: Your current situation shows your understanding of the issues your position faces and key initiatives being undergone, great job! We would love to see more information about specific actions taken by your position in collaboration with corporations or on a global scale in your past action section. Otherwise, your solutions show great consideration for your position's main goals with checks and balances for all parties involved. Your work shows a deep understanding of the topic and preparedness for the conference. If you have any questions regarding your feedback please do not hesitate to reach out. We cannot wait to see you in committee!"])
+prediction = model.predict(text_vectorized)
+print(prediction)

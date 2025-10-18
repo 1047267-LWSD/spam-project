@@ -1,6 +1,5 @@
 import pickle as pkl
 import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
 import shap
 with open('saved-models/spam-detector.pkl', 'rb') as f:
@@ -30,8 +29,7 @@ def spam_detect(text):
     shap_values = explainer.shap_values(vec_text)
     words = spam_vec.get_feature_names_out()
     feature_indices = vec_text.nonzero()[1]
-    spam_dictionary['word_contributions'] = {words[idx]: shap_values[0][idx] for idx in feature_indices if shap_values[0][idx] > 0}
-
+    spam_dictionary['word_contributions'] = {words[idx]: shap_values[0][idx] for idx in feature_indices}
     if prediction == 'spam':
         vec_cat = cat_vec.transform(text_in_array)
         cat_pred = cat_model.predict(vec_cat)[0]
