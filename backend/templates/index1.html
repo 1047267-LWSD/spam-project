@@ -13,16 +13,21 @@
     <a href = '/forum'>Forum Page</a>
     <h1>Spam Detection stuff</h1>
     <form>
+    <div id = 'ocr-form'>
     <input type="file" id="myFile" name="filename" style = 'display:none'>
     <button type="button" id="customFileButton">Choose File</button>
     <span id="fileName">No file chosen</span>
     <button type="button" id="upload">Upload</button>
+    </div>
     </form>
+    <div id = 'upload-form'>
     <label for = 'spam-input'>Spam detector stuff</label>
     <input type = 'text' id = 'spam-input' name = 'spam-input'>
     <button id = 'check'> Submit Message</button>
+    <div = id = 'results'>
     <button style = 'display:none' id = 'report'>Report to Forum</button>
     <button style = 'display:none' id = 'cancel'>Cancel</button>
+    </div>
 
 </body>
 <script type="module" src="{{ url_for('static', filename='script.js') }}?v=2"></script>
