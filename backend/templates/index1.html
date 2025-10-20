@@ -2,19 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel = 'stylesheet' href="{{ url_for('static', filename='styles.css') }}"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">  
+    <title>Detection</title>
 </head>
 <body>
+    <a href = '/forum'>Forum Page</a>
     <h1>Spam Detection stuff</h1>
     <form>
-    <input type="file" id="myFile" name="filename">
+    <input type="file" id="myFile" name="filename" style = 'display:none'>
+    <button type="button" id="customFileButton">Choose File</button>
+    <span id="fileName">No file chosen</span>
     <button type="button" id="upload">Upload</button>
     </form>
     <label for = 'spam-input'>Spam detector stuff</label>
     <input type = 'text' id = 'spam-input' name = 'spam-input'>
     <button id = 'check'> Submit Message</button>
+    <button style = 'display:none' id = 'report'>Report to Forum</button>
+    <button style = 'display:none' id = 'cancel'>Cancel</button>
+
 </body>
-<script src="{{ url_for('static', filename='script.js') }}?v=2"></script>
+<script type="module" src="{{ url_for('static', filename='script.js') }}?v=2"></script>
+<script type="module" src="{{ url_for('static', filename='firebase-config.js') }}"></script>
+
 </html>
 
