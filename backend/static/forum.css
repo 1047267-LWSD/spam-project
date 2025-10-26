@@ -1,11 +1,91 @@
 @import url('https://fonts.googleapis.com/css2?family=Onest:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .posts{
-    border: 2px, solid, gray;
+    border: 1px solid rgb(197, 198, 198);
     padding: 5px;
-    margin: 15px;
+    margin: 30px;
+    box-shadow: 10px 20px  15px rgb(197, 198, 198);
+    border-radius: 30px;
     
 }
 body {
     font-family: 'Onest', 'sans-serif';
+}
+h1 {
+    padding-top: 200px;
+    text-align: center;
+}
+#description {
+    width: 75%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    
+}
+.description-box {
+    background-color: rgb(153, 213, 238);
+    display: flex;
+}
+
+.details {
+    display: flex;
+    justify-content: space-around;
+} 
+
+.message {
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    background-color:  rgb(153, 213, 238);
+    border-radius: 5px;
+    padding: 50px;
+}
+
+.time {
+    padding-left: 20px;
+    padding-top: 30px;
+    color: rgb(93, 93, 93);
+}
+
+.confidence, .type {
+    color: rgb(82, 142, 168);
+}
+
+.navbar {
+    background-color: rgb(143, 238, 255);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 260px;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 20px;
+}
+.logo {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    background-color: rgb(30, 0, 255);
+    border-radius: 100px;
+    padding: 30px;
+}
+.nav-links a{
+    padding: 20px;
+    width: 150px;
+    color: rgb(0, 110, 255);
+    background-color: rgb(86, 199, 255);
+    border-radius: 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.nav-links{
+    display: flex;
+    justify-content: space-around;
+    gap: 150px;
 }

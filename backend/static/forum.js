@@ -11,25 +11,34 @@ async function loadDocs() {
     docItem['prediction'] = doc.data().prediction;
     docItem['confidence'] = doc.data().confidence;
     docItem['type'] = doc.data().type;
-    docItem['time'] = doc.data().timestamp;
+    let timestamp = doc.data().timestamp;
+    let date = new Date(timestamp);
+    let pstDate = date.toLocaleDateString('en-US', {timeZone: 'America/Los_Angeles'})
+    docItem['time'] = pstDate
     responses.push(docItem);
  });
  responses.forEach((response) => {
     let post = document.createElement('div');
+    let time = document.createElement('p');
+    time.setAttribute('class','time');
     let message = document.createElement('p');
-    let prediction = document.createElement('p');
+    message.setAttribute('class','message');
     let confidence = document.createElement('p');
+    confidence.setAttribute('class','confidence');
     let type = document.createElement('p');
-
+    type.setAttribute('class','type');
+    let details = document.createElement('div');
+    details.setAttribute('class', 'details');
+    time.textContent = response['time'];
     message.textContent = response['message'];
-    prediction.textContent = response['prediction'];
-    confidence.textContent = response['confidence'];
-    type.textContent = response['type'];
+    confidence.textContent = "Confidence: " + response['confidence'];
+    type.textContent = "Spam type: "+ response['type'];
 
+    post.appendChild(time);
     post.appendChild(message);
-    post.appendChild(prediction);
-    post.appendChild(confidence);
-    post.appendChild(type);
+    details.appendChild(confidence);
+    details.appendChild(type);
+    post.appendChild(details);
     post.className = 'posts';
     container.appendChild(post);
  })
