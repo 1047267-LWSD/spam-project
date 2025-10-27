@@ -3,20 +3,21 @@
 body, button, input, #myFile {
     font-family: 'Onest', 'sans-serif';
 }
-
+body {
+    margin: 0;
+    padding: 0;
+}
 .navbar {
     background-color: rgb(143, 238, 255);
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    gap: 260px;
+    justify-content: space-between;
+    gap: 20px;
     flex-wrap: wrap;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
+    position: relative;
     padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
 }
 .logo {
     width: 50px;
@@ -29,8 +30,8 @@ body, button, input, #myFile {
 .nav-links a{
     padding: 20px;
     width: 150px;
-    color: rgb(0, 110, 255);
-    background-color: rgb(86, 199, 255);
+    color: rgb(255, 255, 255);
+    background-color: rgb(76, 195, 255);
     border-radius: 20px;
     text-decoration: none;
     text-align: center;
@@ -43,6 +44,186 @@ body, button, input, #myFile {
 }
 
 h1 {
-    padding-top: 200px;
     text-align: center;
+}
+#option-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 300px;
+}
+
+#option-buttons button {
+    padding: 20px; 
+    border: 0px;
+    border-radius: 15px;
+    background-color: antiquewhite;
+}
+
+#option-buttons button:hover {
+    background-color: rgb(220, 207, 191);
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    align-items: center;
+    width: 50%;
+    background-color: rgb(211, 226, 255);
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;;
+    margin-top: 20px;
+}
+#spam-input {
+    width: 75%;
+    height: 200px;
+    border: 0px;
+    border-radius: 2px;
+    margin-top: 10px;
+}
+
+#spam-input::placeholder{
+    color: rgb(171, 171, 171);
+    padding: 5px;
+}
+
+#check, #customFileButton, #upload {
+    background-color: rgb(159, 193, 255);
+    border: 0px;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 15px;
+}
+
+#check:hover, #customFileButton:hover, #upload:hover {
+    background-color: rgb(128, 156, 208);
+    border: 0px;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 15px;
+}
+
+
+#result {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#results {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+
+ #results button {
+    width: auto;
+    padding: 20px;
+    margin: 15px;
+    border: 0px;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    }
+
+ #report {
+    background-color: rgb(159, 193, 255);
+ }
+ #report:hover {
+     background-color: rgb(128, 156, 208);
+ }
+
+ #cancel {
+    background-color: rgb(204, 68, 68);
+    color: white;
+}
+
+#cancel:hover {
+    background-color: rgb(140, 37, 37)
+}
+
+@media (max-width: 768px) {
+    #results {
+        flex-direction: column;  
+        gap: 10px;
+    }
+    #results button {
+    width: auto;
+    padding: 20px;
+    background-color: rgb(159, 193, 255);
+    border: 0px;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    }
+
+    }
+
+#results h2 {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+#confcat {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    flex-wrap: wrap;
+}
+
+#results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#analyzed {
+    background-color: antiquewhite;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 15px;
+    flex-direction: column;
+}
+
+#key {
+    font-style: italic;
+    color: rgb(91, 91, 91);
+}
+
+
+@media (max-width: 768px) {
+    .navbar {
+        gap: 20px;  
+        flex-direction: column;  
+        padding: 15px;
+        align-items: center;
+    }
+    
+    .logo {
+        width: 50px;  
+        height: 50px;
+        align-self: center;
+        padding: 20px;
+        margin: 0 auto;
+    }
+    
+    .nav-links {
+        gap: 20px; 
+        flex-direction: column;  
+        width: 75%;
+        align-self: center;
+        align-items: center;
+        margin: 0 auto;
+    }
+    
+    .nav-links a {
+        width: 75%; 
+        text-align: center;
+    }
 }

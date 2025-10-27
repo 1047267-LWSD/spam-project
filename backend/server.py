@@ -42,7 +42,7 @@ def get_predict():
         return 'GET'
 @app.route('/forum')
 def forum():
-    return render_template('forum.html')        
+    return render_template('forum.html')
 
 if __name__ == '__main__':
     serve(app, host = "127.0.0.1", port = 8000)

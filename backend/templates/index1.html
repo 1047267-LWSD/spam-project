@@ -11,26 +11,34 @@
 </head>
 <body>
     <div class = 'navbar'> 
-        <div class = 'logo'></div>
+        <div class = 'logo'>
+            <img src = 'backend/static/Logo.png'></img>
+        </div>
         <div class = 'nav-links'>
-        <a href = '/index'>Spam Detector</a>
+        <a href = '/index'>Scam Detector</a>
         <a href = '/forum'>Forum Page</a>
         </div>
     </div>
-    <h1>Spam Detection stuff</h1>
+    <h1>Scam Detector</h1>
+    <div id = 'option-buttons'>
+        <button id = 'ocr-button'>Upload an Image</button>
+        <button id = 'text-button'>Copy &amp; Paste a text </button>
+    </div>
     <form>
-    <div id = 'ocr-form'>
+    <div id = 'ocr-form' class = 'upload-form'>
     <input type="file" id="myFile" name="filename" style = 'display:none'>
     <button type="button" id="customFileButton">Choose File</button>
     <span id="fileName">No file chosen</span>
     <button type="button" id="upload">Upload</button>
     </div>
     </form>
-    <div id = 'upload-form'>
-    <label for = 'spam-input'>Spam detector stuff</label>
-    <input type = 'text' id = 'spam-input' name = 'spam-input'>
+    <div id = 'text-form' class = 'upload-form'>
+    <input type = 'text' id = 'spam-input' name = 'spam-input' placeholder = 'Enter a valid text message you wish to detect'>
     <button id = 'check'> Submit Message</button>
-    <div = id = 'results'>
+    </div>
+    <div id = 'results-container'>
+    </div>
+    <div id = 'results'>
     <button style = 'display:none' id = 'report'>Report to Forum</button>
     <button style = 'display:none' id = 'cancel'>Cancel</button>
     </div>

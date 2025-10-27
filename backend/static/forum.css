@@ -10,22 +10,29 @@
 }
 body {
     font-family: 'Onest', 'sans-serif';
+    margin: 0;
+    padding: 0;
 }
+
 h1 {
-    padding-top: 200px;
     text-align: center;
 }
 #description {
-    width: 75%;
+    width: 100%;
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
+    margin: 0 auto;
+    display: block;
+    word-wrap: break-word;
     
 }
 .description-box {
     background-color: rgb(153, 213, 238);
-    display: flex;
+    display: flex;  
+    width: 100%;  
+    padding: 20px;  
+    box-sizing: border-box; 
+
+    
 }
 
 .details {
@@ -56,15 +63,13 @@ h1 {
     background-color: rgb(143, 238, 255);
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    gap: 260px;
+    justify-content: space-between;
+    gap: 20px;
     flex-wrap: wrap;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
+    position: relative;
     padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
 }
 .logo {
     width: 50px;
@@ -77,8 +82,8 @@ h1 {
 .nav-links a{
     padding: 20px;
     width: 150px;
-    color: rgb(0, 110, 255);
-    background-color: rgb(86, 199, 255);
+    color: rgb(255, 255, 255);
+    background-color: rgb(76, 195, 255);
     border-radius: 20px;
     text-decoration: none;
     text-align: center;
@@ -88,4 +93,35 @@ h1 {
     display: flex;
     justify-content: space-around;
     gap: 150px;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        gap: 20px;  
+        flex-direction: column;  
+        padding: 15px;
+        align-items: center;
+    }
+    
+    .logo {
+        width: 50px;  
+        height: 50px;
+        align-self: center;
+        padding: 20px;
+        margin: 0 auto;
+    }
+    
+    .nav-links {
+        gap: 20px; 
+        flex-direction: column;  
+        width: 75%;
+        align-self: center;
+        align-items: center;
+        margin: 0 auto;
+    }
+    
+    .nav-links a {
+        width: 75%; 
+        text-align: center;
+    }
 }

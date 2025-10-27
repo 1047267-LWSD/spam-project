@@ -2,16 +2,43 @@ import { addDoc, collection } from "https://www.gstatic.com/firebasejs/11.0.1/fi
 import { db } from './firebase-config.js';
     document.addEventListener('DOMContentLoaded', () => {   
     const spam = document.getElementById('spam-input');
-    const text = document.createElement('p');
     const button = document.getElementById('check');
     const shapped = document.createElement('p');
     const img = document.getElementById('myFile');
     const upload = document.getElementById('upload');
-    const showocrtext = document.createElement('p');
     const report = document.getElementById('report');
     const cancel = document.getElementById('cancel');
     const customButton = document.getElementById('customFileButton');
     const fileNameDisplay = document.getElementById('fileName');
+    const ocrBtn = document.getElementById('ocr-button');
+    const txtBtn = document.getElementById('text-button');
+    const ocrForm = document.getElementById('ocr-form');
+    const txtForm = document.getElementById('text-form');
+    const resultsContainer = document.getElementById('results-container');
+    const predicted = document.createElement('h2');
+    const confident = document.createElement('h3');
+    const category = document.createElement('h3');
+    const confcat = document.createElement('div');
+    const results = document.createElement('div');
+    const analysisdescription = document.createElement('h3');
+    const key = document.createElement('p');
+    key.setAttribute('id','key');
+    key.innerHTML = "<span style = 'background-color: yellow'>highlighted words</span> are classified as suspicious";
+    analysisdescription.textContent = "Suspicious words in your message";
+    const analyzed = document.createElement('div');
+    analyzed.appendChild(analysisdescription);
+    analyzed.setAttribute('id','analyzed');
+    analyzed.style.display = 'none';
+    results.setAttribute('id', 'result');
+    confcat.setAttribute('id','confcat');
+    shapped.setAttribute('id', 'shapped');
+    confcat.appendChild(confident);
+    confcat.appendChild(category);
+    results.appendChild(predicted);
+    results.appendChild(confcat);
+    ocrForm.style.display = 'none';
+    txtForm.style.display = 'none';
+    
     let prediction = '';
     let confidence = '';
     let type = '';
@@ -33,7 +60,6 @@ import { db } from './firebase-config.js';
         });
         const data = await response.json();
         ocrtext = data.text || 'No text detected.';
-        showocrtext.textContent=ocrtext;
        }
        catch (error){
         console.error(error);
@@ -52,7 +78,10 @@ import { db } from './firebase-config.js';
                 body: JSON.stringify({text: textToSend})
             });
             const data = await response.json();
-            text.textContent = `Prediction: ${data.prediction}, Confidence: ${(data.confidence*100).toFixed(2)}%, Spam Type: ${data.type}`;
+            predicted.textContent = 'Prediction: ' + data.prediction;
+            confident.textContent = 'Confidence: ' + (data.confidence*100).toFixed(0) + "%";
+            category.textContent = 'Type: ' + data.type;
+            resultsContainer.style.display='flex';
             prediction = data.prediction;
             confidence = `${(data.confidence*100).toFixed(2)}%`;
             type = data.type;
@@ -70,8 +99,10 @@ import { db } from './firebase-config.js';
                 }
             }).join(' ');
             shapped.innerHTML = highlightedText;
+            analyzed.style.display = 'flex';
+            analyzed.appendChild(shapped);
+            analyzed.appendChild(key);
             if (prediction == 'ham') {
-                reset();
                 return;
             }
             if (prediction == 'spam') {
@@ -87,15 +118,18 @@ import { db } from './firebase-config.js';
     }
     function reset() {
         spam.value = null;
-        text.textContent = '';
         spam_input = '';
         ocrtext = '';
         img.value = null;
         report.style.display = 'none';
         cancel.style.display = 'none';
+        resultsContainer.style.display = 'none';
         prediction = '';
         confidence = '';
         type = '';
+        confident.textContent = '';
+        predicted.textContent = '';
+        category.textContent = '';
         currentMessage = '';
 
     }
@@ -111,7 +145,6 @@ import { db } from './firebase-config.js';
     } else {
         fileNameDisplay.textContent = 'No file chosen';
     }
-    showocrtext.textContent = '';
     shapped.textContent = '';
     process_img();
     });
@@ -121,6 +154,7 @@ import { db } from './firebase-config.js';
     }
     else {
     detect(ocrtext);
+    resultsContainer.style.display = 'flex';
     }
     });
     report.addEventListener('click', async() => {
@@ -150,7 +184,16 @@ import { db } from './firebase-config.js';
     cancel.addEventListener('click', function() {
         reset();
     });
-    document.body.appendChild(text);
-    document.body.appendChild(shapped);
-    document.body.appendChild(showocrtext);
+    ocrBtn.addEventListener('click', function(){
+        ocrForm.style.display = 'flex';
+        txtForm.style.display = 'none';
+        reset();
+    });
+    txtBtn.addEventListener('click', function(){
+        txtForm.style.display = 'flex';
+        ocrForm.style.display = 'none';
+        reset();
+    });
+    resultsContainer.appendChild(results);
+    resultsContainer.appendChild(analyzed);
 });
