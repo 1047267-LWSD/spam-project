@@ -169,7 +169,9 @@ import { db } from './firebase-config.js';
             prediction: prediction,
             confidence: confidence,
             type: type,
-            timestamp: new Date().toISOString()
+            timestamp: new Date().toISOString(),
+            upvotes: 0,
+            downvotes: 0
 
         });
         alert('Reported Successfully!');
