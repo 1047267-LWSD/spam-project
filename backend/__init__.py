@@ -1,1 +1,1 @@
-from backend.pipeline import spam_detect
+from .pipeline import spam_detect
