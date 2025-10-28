@@ -2,15 +2,17 @@ import pickle as pkl
 import numpy as np
 import pandas as pd
 import shap
-with open('saved-models/spam-detector.pkl', 'rb') as f:
+import os 
+base_dir = os.path.dirname(os.path.abspath(__file__))
+with open(os.path.join(base_dir, 'saved-models', 'spam-detector.pkl'), 'rb') as f:
     spam_model = pkl.load(f)
-with open('saved-models/detector-vectorizer.pkl', 'rb') as f:
+with open(os.path.join(base_dir, 'saved-models', 'detector-vectorizer.pkl'), 'rb') as f:
     spam_vec = pkl.load(f)
-with open('saved-models/spam-categorizer.pkl', 'rb') as f:
+with open(os.path.join(base_dir, 'saved-models', 'spam-categorizer.pkl'), 'rb') as f:
     cat_model = pkl.load(f)
-with open('saved-models/categorizer-vectorizer.pkl', 'rb') as f:
+with open(os.path.join(base_dir, 'saved-models', 'categorizer-vectorizer.pkl'), 'rb') as f:
     cat_vec = pkl.load(f)
-background =pd.read_csv('datasets/hamspam.csv', encoding='latin1', quotechar='"', skipinitialspace=True)['v2']
+background = pd.read_csv('datasets/hamspam.csv', encoding='latin-1', on_bad_lines='skip')['v2']
 background_vec = spam_vec.transform(background)
 explainer = shap.LinearExplainer(spam_model, background_vec)
 spam_dictionary = {}
