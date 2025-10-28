@@ -12,7 +12,7 @@ with open(os.path.join(base_dir, 'saved-models', 'spam-categorizer.pkl'), 'rb') 
     cat_model = pkl.load(f)
 with open(os.path.join(base_dir, 'saved-models', 'categorizer-vectorizer.pkl'), 'rb') as f:
     cat_vec = pkl.load(f)
-background = pd.read_csv('datasets/hamspam.csv', encoding='latin-1', on_bad_lines='skip')['v2']
+background = pd.read_csv(os.path.join(base_dir, 'datasets', 'hamspam.csv'), encoding='latin-1', on_bad_lines='skip')['v2']
 background_vec = spam_vec.transform(background)
 explainer = shap.LinearExplainer(spam_model, background_vec)
 spam_dictionary = {}
