@@ -10,11 +10,57 @@ body {
 
 h1 {
     text-align: center;
+    background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/static/spam.png);
+    background-position: center;
+    background-size: cover;
+    padding: 100px;
+    color: white;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    
+
+}
+#description {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    word-wrap: break-word;
+    
+}
+.description-box {
+    background-color: rgb(153, 213, 238);
+    display: flex; 
+    flex-direction: column; 
+    width: 100%;  
+    padding: 20px;  
+    box-sizing: border-box; 
+    margin-bottom: 15px;    
+
+    
+}
+#encouragement{
+    padding: 20px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(76, 195, 255);
+    border-radius: 20px;
+    text-decoration: none;
+    align-self: center;
+    margin: 15px;
+    text-align: center;
+}
+
+#encouragement:hover{
+    background-color: rgb(63, 161, 209);
 }
 #option-buttons {
     display: flex;
     justify-content: center;
-    gap: 300px;
+    gap: 200px;
+    margin: 15px;
+}
+.nav-links a:hover{
+    background-color: rgb(63, 161, 209);
 }
 
 #option-buttons button {
@@ -22,12 +68,13 @@ h1 {
     border: 0px;
     border-radius: 15px;
     background-color: antiquewhite;
+    width: 100%;
+    font-size: 20px;
 }
 
 #option-buttons button:hover {
     background-color: rgb(220, 207, 191);
 }
-
 .upload-form {
     display: flex;
     flex-direction: column;
@@ -74,6 +121,7 @@ h1 {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    margin: 15px;
 }
 
 #results {
@@ -84,7 +132,13 @@ h1 {
     flex-wrap: wrap;
     gap: 2px;
 }
-
+#scam-description{
+    flex-direction: column;
+    background-color: antiquewhite;
+    padding: 20px;
+    border-radius: 10px;;
+    margin: 15px;
+}
  #results button {
     width: auto;
     padding: 20px;
@@ -98,7 +152,7 @@ h1 {
  #report {
     background-color: rgb(159, 193, 255);
  }
- #report:hover {
+ #report:hover { 
      background-color: rgb(128, 156, 208);
  }
 
@@ -119,12 +173,19 @@ h1 {
     #results button {
     width: auto;
     padding: 20px;
-    background-color: rgb(159, 193, 255);
     border: 0px;
     border-radius: 15px;
     display: flex;
     flex-wrap: wrap;
     }
+     #cancel {
+    background-color: rgb(204, 68, 68);
+    color: white;
+}
+
+#cancel:hover {
+    background-color: rgb(140, 37, 37)
+}
 
     }
 
@@ -155,6 +216,8 @@ h1 {
     margin: 15px;
     flex-direction: column;
 }
+
+
 
 #key {
     font-style: italic;
@@ -202,7 +265,7 @@ h1 {
 }
 @media (max-width: 768px) {
     .navbar {
-        gap: 20px;  
+        gap: 10px;  
         flex-direction: column;  
         padding: 15px;
         align-items: center;
@@ -212,14 +275,13 @@ h1 {
         width: 100px;
         height: 100px;
         display: flex;
-        border-radius: 100px;
-        padding: 30px;
+        padding: 0px;
     }
     
     .nav-links {
-        gap: 20px; 
-        flex-direction: column;  
-        width: 75%;
+        gap: 50px; 
+        flex-direction: row;  
+        width: 100%;
         align-self: center;
         align-items: center;
         margin: 0 auto;

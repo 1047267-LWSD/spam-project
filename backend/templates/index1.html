@@ -16,13 +16,17 @@
         </div>
         <div class = 'nav-links'>
         <a href = '/index'>Scam Detector</a>
-        <a href = '/forum'>Forum Page</a>
+        <a href = '/forum'>Community Forum</a>
         </div>
     </div>
     <h1>Scam Detector</h1>
+    <div class = "description-box">
+     <p id = 'description'>Have you received a suspicious text message? Our AI-powered detectors with over 90% accuracy can analyze your text message and determine whether it is a scam or not. Just paste your text message or upload a screenshot, and we’ll provide you with a prediction of what type of message you’re dealing with and suspicious words in your text.</p>
+     <a id = 'encouragement' href = '/forum'>Discover messages detected by other users here</a>
+    </div>
     <div id = 'option-buttons'>
-        <button id = 'ocr-button'>Upload an Image</button>
-        <button id = 'text-button'>Copy &amp; Paste a text </button>
+        <button id = 'ocr-button'>📸 Upload an Image</button>
+        <button id = 'text-button'>💬 Copy &amp; Paste a text </button>
     </div>
     <form>
     <div id = 'ocr-form' class = 'upload-form'>
@@ -33,9 +37,10 @@
     </div>
     </form>
     <div id = 'text-form' class = 'upload-form'>
-    <input type = 'text' id = 'spam-input' name = 'spam-input' placeholder = 'Enter a valid text message you wish to detect'>
+    <textarea type = 'text' id = 'spam-input' name = 'spam-input' placeholder = 'Enter a valid text message you wish to check (please enter at least 150 characters for an accurate prediction)'></textarea>
     <button id = 'check'> Submit Message</button>
     </div>
+    <div id = 'scam-description'></div>
     <div id = 'results-container'>
     </div>
     <div id = 'results'>

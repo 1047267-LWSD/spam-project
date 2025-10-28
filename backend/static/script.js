@@ -20,6 +20,8 @@ import { db } from './firebase-config.js';
     const category = document.createElement('h3');
     const confcat = document.createElement('div');
     const results = document.createElement('div');
+    const description = document.getElementById('scam-description');
+    description.style.display = 'none';
     const analysisdescription = document.createElement('h3');
     const key = document.createElement('p');
     key.setAttribute('id','key');
@@ -42,7 +44,6 @@ import { db } from './firebase-config.js';
     let prediction = '';
     let confidence = '';
     let type = '';
-    let spam_input = '';
     let ocrtext = '';
     let currentMessage = '';
     async function process_img() {
@@ -78,10 +79,85 @@ import { db } from './firebase-config.js';
                 body: JSON.stringify({text: textToSend})
             });
             const data = await response.json();
-            predicted.textContent = 'Prediction: ' + data.prediction;
+            if (data.prediction == 'spam'){
+            predicted.textContent = 'Your message is most likely: ' + data.prediction;
+            }
+            else {
+            predicted.textContent = 'Your message is most likely: safe';
+            }
             confident.textContent = 'Confidence: ' + (data.confidence*100).toFixed(0) + "%";
-            category.textContent = 'Type: ' + data.type;
+            category.innerHTML='';
+            if (data.prediction == 'spam'){
+           category.textContent = 'Type: ' + data.type;
+            }
+            else {
+            category.innerHTML='';   
+            }
+            description.innerHTML = ''; 
+            description.style.display = 'none'; 
+            if (data.type == 'personal') {
+                const summary = document.createElement('p');
+                summary.textContent = 'Our model has detected your message as a personal scam message. This means your message could be showing signs of:'
+                const listofels = document.createElement('ul');
+                const element1 = document.createElement('li');
+                const element2 = document.createElement('li');
+                element1.textContent = 'A person or service is trying to interact with you on a personal level or contact you for a job or for other reasons';
+                element2.textContent = 'An inappropriate message from an unknown person';
+                listofels.appendChild(element1);
+                listofels.appendChild(element2);
+                description.appendChild(summary);
+                description.appendChild(listofels);
+                description.style.display = 'flex';
+                results.appendChild(description);
+            }
+            else if (data.type == 'lottery') {
+                const summary = document.createElement('p');
+                summary.textContent = 'Our model has detected your message as a lottery or prize scam. This means your message could be showing signs of:'
+                const listofels = document.createElement('ul');
+                const element1 = document.createElement('li');
+                const element2 = document.createElement('li');
+                element1.textContent = 'Promises of winning money, prizes, or rewards';
+                element2.textContent = 'Requests for personal information or payment to “claim” something';
+                listofels.appendChild(element1);
+                listofels.appendChild(element2);
+                description.appendChild(summary);
+                description.appendChild(listofels);
+                description.style.display = 'flex';
+                results.appendChild(description);
+            }
+            else if (data.type == 'service') {
+                const summary = document.createElement('p');
+                summary.textContent = 'Our model has detected your message as a service scam. This means your message could be showing signs of:'
+                const listofels = document.createElement('ul');
+                const element1 = document.createElement('li');
+                const element2 = document.createElement('li');
+                element1.textContent = 'A company, service, or organization asking for sensitive information';
+                element2.textContent = 'Fake delivery, billing, or support messages requesting payment or verification';
+                listofels.appendChild(element1);
+                listofels.appendChild(element2);
+                description.appendChild(summary);
+                description.appendChild(listofels);
+                description.style.display = 'flex';
+                results.appendChild(description);
+            }
+            else if (data.type == 'fake-message') {
+                const summary = document.createElement('p');
+                summary.textContent = 'Our model has detected your message as a fake or phishing message. This means your message could be showing signs of:'
+                const listofels = document.createElement('ul');
+                const element1 = document.createElement('li');
+                const element2 = document.createElement('li');
+                element1.textContent = 'Impersonation of a trusted source, such as a bank or company';
+                element2.textContent = 'Links or attachments designed to steal information or install malware';
+                listofels.appendChild(element1);
+                listofels.appendChild(element2);
+                description.appendChild(summary);
+                description.appendChild(listofels);
+                description.style.display = 'flex';
+                results.appendChild(description);
+            }
             resultsContainer.style.display='flex';
+            resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
             prediction = data.prediction;
             confidence = `${(data.confidence*100).toFixed(2)}%`;
             type = data.type;
@@ -118,7 +194,6 @@ import { db } from './firebase-config.js';
     }
     function reset() {
         spam.value = null;
-        spam_input = '';
         ocrtext = '';
         img.value = null;
         report.style.display = 'none';
@@ -155,6 +230,7 @@ import { db } from './firebase-config.js';
     else {
     detect(ocrtext);
     resultsContainer.style.display = 'flex';
+    resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
     });
     report.addEventListener('click', async() => {
