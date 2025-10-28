@@ -4,15 +4,16 @@ import pandas as pd
 import shap
 import os 
 base_dir = os.path.dirname(os.path.abspath(__file__))
-with open(os.path.join(base_dir, 'saved-models', 'spam-detector.pkl'), 'rb') as f:
+project_root = os.path.dirname(base_dir)
+with open(os.path.join(project_root, 'saved-models', 'spam-detector.pkl'), 'rb') as f:
     spam_model = pkl.load(f)
-with open(os.path.join(base_dir, 'saved-models', 'detector-vectorizer.pkl'), 'rb') as f:
+with open(os.path.join(project_root, 'saved-models', 'detector-vectorizer.pkl'), 'rb') as f:
     spam_vec = pkl.load(f)
-with open(os.path.join(base_dir, 'saved-models', 'spam-categorizer.pkl'), 'rb') as f:
+with open(os.path.join(project_root, 'saved-models', 'spam-categorizer.pkl'), 'rb') as f:
     cat_model = pkl.load(f)
-with open(os.path.join(base_dir, 'saved-models', 'categorizer-vectorizer.pkl'), 'rb') as f:
+with open(os.path.join(project_root, 'saved-models', 'categorizer-vectorizer.pkl'), 'rb') as f:
     cat_vec = pkl.load(f)
-background = pd.read_csv(os.path.join(base_dir, 'datasets', 'hamspam.csv'), encoding='latin-1', on_bad_lines='skip')['v2']
+background = pd.read_csv(os.path.join(project_root, 'datasets', 'hamspam.csv'), encoding='latin-1', on_bad_lines='skip')['v2']
 background_vec = spam_vec.transform(background)
 explainer = shap.LinearExplainer(spam_model, background_vec)
 spam_dictionary = {}
