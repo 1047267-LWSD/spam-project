@@ -1,15 +1,8 @@
 from flask import Flask, render_template, request, jsonify
-from waitress import serve 
 from pipeline import spam_detect
 from ocr import img_to_text
-import pytesseract
-import cv2
 import os
-import pandas as pd
-import base64
-import numpy as np
-import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))       
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__,
             template_folder=os.path.join(BASE_DIR, 'templates'),
             static_folder=os.path.join(BASE_DIR, 'static'))

@@ -2,7 +2,7 @@ import pickle as pkl
 import numpy as np
 import pandas as pd
 import shap
-import os 
+import os
 base_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.dirname(base_dir)
 with open(os.path.join(project_root, 'saved-models', 'spam-detector.pkl'), 'rb') as f:
@@ -14,14 +14,14 @@ with open(os.path.join(project_root, 'saved-models', 'spam-categorizer.pkl'), 'r
 with open(os.path.join(project_root, 'saved-models', 'categorizer-vectorizer.pkl'), 'rb') as f:
     cat_vec = pkl.load(f)
 background = pd.read_csv(os.path.join(project_root, 'datasets', 'hamspam.csv'), encoding='latin-1', on_bad_lines='skip')['v2']
-background = background.dropna()  
-background = background[background != '']  
-background = background.astype(str) 
+background = background.dropna()
+background = background[background != '']
+background = background.astype(str)
 background_vec = spam_vec.transform(background)
 explainer = shap.LinearExplainer(spam_model, background_vec)
 spam_dictionary = {}
 def spam_detect(text):
-    spam_dictionary = {} 
+    spam_dictionary = {}
     text_in_array = [text]
     spam_dictionary['text'] = text
 
