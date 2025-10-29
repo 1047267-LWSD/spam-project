@@ -8,6 +8,9 @@ app = Flask(__name__,
             static_folder=os.path.join(BASE_DIR, 'static'))
 @app.route('/')
 @app.route('/index')
+def home():
+    return render_template('homepage.html')
+@app.route('/detector')
 def index():
     return render_template('index1.html')
 @app.route('/predict/detect', methods = ['POST'])

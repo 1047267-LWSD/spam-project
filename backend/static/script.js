@@ -80,7 +80,7 @@ import { db } from './firebase-config.js';
             });
             const data = await response.json();
             if (data.prediction == 'spam'){
-            predicted.textContent = 'Your message is most likely: ' + data.prediction;
+            predicted.textContent = 'Your message is most likely: scam';
             }
             else {
             predicted.textContent = 'Your message is most likely: safe';
@@ -246,6 +246,8 @@ import { db } from './firebase-config.js';
             confidence: confidence,
             type: type,
             timestamp: new Date().toISOString(),
+            upvotes: 0,
+            downvotes: 0
 
         });
         alert('Reported Successfully!');

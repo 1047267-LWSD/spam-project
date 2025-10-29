@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel = 'stylesheet' href="{{ url_for('static', filename='homepage.css') }}"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">  
+    <title>Watchtower</title>
+</head>
+<body>
+    <div class = 'navbar'> 
+        <div class = 'logo'>
+            <img src = '/static/Logo.png'></img>
+        </div>
+        <h2 id = 'app-name'>WATCHTOWER</h2>
+        <div class = 'nav-links'>
+        <a href = '/index'>Home</a>
+        <a href = '/detector'>Scam Detector</a>
+        <a href = '/forum'>Community Forum</a>
+        </div>
+    </div>
+    <h1>Welcome to Watchtower</h1>
+    <div class = "description-box">
+     <p id = 'description'>Suspicious about a text? We've all been there. Watchtower's AI-powered scam detectors are here to help you identify scam messages with over 90% accuracy. See immediate results showing scam probability, category, and the specific words that trigger suspicion. Visit our Community Forum to see what scams other anonymous users have found and learn about what scams you might face.</p>
+     <a id = 'encouragement' href = '/detector'>Try it now!</a>
+    </div>
+
+</body>
+<script type="module" src="{{ url_for('static', filename='script.js') }}?v=2"></script>
+<script type="module" src="{{ url_for('static', filename='firebase-config.js') }}"></script>
+
+</html>
+
