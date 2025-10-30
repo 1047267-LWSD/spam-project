@@ -21,6 +21,8 @@ import { db } from './firebase-config.js';
     const confcat = document.createElement('div');
     const results = document.createElement('div');
     const description = document.getElementById('scam-description');
+    const bottom = document.createElement('div');
+    bottom.setAttribute('id','results');
     description.style.display = 'none';
     const analysisdescription = document.createElement('h3');
     const key = document.createElement('p');
@@ -36,6 +38,9 @@ import { db } from './firebase-config.js';
     shapped.setAttribute('id', 'shapped');
     confcat.appendChild(confident);
     confcat.appendChild(category);
+    bottom.appendChild(report);
+    bottom.appendChild(cancel);
+    confcat.appendChild(bottom);
     results.appendChild(predicted);
     results.appendChild(confcat);
     ocrForm.style.display = 'none';
@@ -80,10 +85,10 @@ import { db } from './firebase-config.js';
             });
             const data = await response.json();
             if (data.prediction == 'spam'){
-            predicted.textContent = 'Your message is most likely: scam';
+            predicted.innerHTML = `Your message is most likely: <span style = 'color:red'>SCAM</span>`;
             }
             else {
-            predicted.textContent = 'Your message is most likely: safe';
+            predicted.textContent = 'Your message is most likely: SAFE';
             }
             confident.textContent = 'Confidence: ' + (data.confidence*100).toFixed(0) + "%";
             category.innerHTML='';
@@ -93,6 +98,29 @@ import { db } from './firebase-config.js';
             else {
             category.innerHTML='';   
             }
+            resultsContainer.style.display='flex';
+            resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'end'});
+            prediction = data.prediction;
+            confidence = `${(data.confidence*100).toFixed(2)}%`;
+            type = data.type;
+            const word_contributions = data.word_contributions;
+            let words = textToSend.split(/[\s\-\/,;:.!?()]+/);
+            console.log(words)
+            let highlightedText = words.map(word => {
+                let cleanWord = word.toLowerCase().replace(/[^\w]/g, '');
+                console.log(`Original: "${word}", Clean: "${cleanWord}", Has contribution: ${!!word_contributions[cleanWord]}, Value: ${word_contributions[cleanWord]}`);
+                if(word_contributions[cleanWord] && word_contributions[cleanWord] > 0) {
+                    return `<span style="background-color: yellow">${cleanWord}</span>`;
+                }
+                else {
+                    return word;
+                }
+            }).join(' ');
+            shapped.innerHTML = highlightedText;
+            analyzed.style.display = 'flex';
+            analyzed.appendChild(shapped);
+            analyzed.appendChild(key);
+            results.appendChild(analyzed)
             description.innerHTML = ''; 
             description.style.display = 'none'; 
             if (data.type == 'personal') {
@@ -155,29 +183,6 @@ import { db } from './firebase-config.js';
                 description.style.display = 'flex';
                 results.appendChild(description);
             }
-            resultsContainer.style.display='flex';
-            resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            prediction = data.prediction;
-            confidence = `${(data.confidence*100).toFixed(2)}%`;
-            type = data.type;
-            const word_contributions = data.word_contributions;
-            let words = textToSend.split(/[\s\-\/,;:.!?()]+/);
-            console.log(words)
-            let highlightedText = words.map(word => {
-                let cleanWord = word.toLowerCase().replace(/[^\w]/g, '');
-                console.log(`Original: "${word}", Clean: "${cleanWord}", Has contribution: ${!!word_contributions[cleanWord]}, Value: ${word_contributions[cleanWord]}`);
-                if(word_contributions[cleanWord] && word_contributions[cleanWord] > 0) {
-                    return `<span style="background-color: yellow">${cleanWord}</span>`;
-                }
-                else {
-                    return word;
-                }
-            }).join(' ');
-            shapped.innerHTML = highlightedText;
-            analyzed.style.display = 'flex';
-            analyzed.appendChild(shapped);
-            analyzed.appendChild(key);
             if (prediction == 'ham') {
                 return;
             }
@@ -191,6 +196,10 @@ import { db } from './firebase-config.js';
             alert('Error Submitting Form');
         }
         textToSend = '';
+         setTimeout(() => {
+    resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'end' ,});
+    }
+    , 500);
     }
     function reset() {
         spam.value = null;
@@ -230,7 +239,6 @@ import { db } from './firebase-config.js';
     else {
     detect(ocrtext);
     resultsContainer.style.display = 'flex';
-    resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
     });
     report.addEventListener('click', async() => {
@@ -264,14 +272,15 @@ import { db } from './firebase-config.js';
     });
     ocrBtn.addEventListener('click', function(){
         ocrForm.style.display = 'flex';
+        ocrForm.scrollIntoView({ behavior: 'smooth', block: 'end'});
         txtForm.style.display = 'none';
         reset();
     });
     txtBtn.addEventListener('click', function(){
         txtForm.style.display = 'flex';
+        txtForm.scrollIntoView({ behavior: 'smooth', block: 'end'});
         ocrForm.style.display = 'none';
         reset();
     });
     resultsContainer.appendChild(results);
-    resultsContainer.appendChild(analyzed);
 });

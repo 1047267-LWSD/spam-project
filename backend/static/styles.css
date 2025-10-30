@@ -263,6 +263,7 @@ h1 {
     gap: 150px;
     margin: 10px;
 }
+
 @media (max-width: 768px) {
     .navbar {
         gap: 10px;  

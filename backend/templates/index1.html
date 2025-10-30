@@ -36,7 +36,7 @@
     <input type="file" id="myFile" name="filename" style = 'display:none'>
     <button type="button" id="customFileButton">Choose File</button>
     <span id="fileName">No file chosen</span>
-    <button type="button" id="upload">Upload</button>
+    <button type="button" id="upload">Submit Image</button>
     </div>
     </form>
     <div id = 'text-form' class = 'upload-form'>
@@ -46,10 +46,8 @@
     <div id = 'scam-description'></div>
     <div id = 'results-container'>
     </div>
-    <div id = 'results'>
     <button style = 'display:none' id = 'report'>Report to Forum</button>
     <button style = 'display:none' id = 'cancel'>Cancel</button>
-    </div>
 
 </body>
 <script type="module" src="{{ url_for('static', filename='script.js') }}?v=2"></script>

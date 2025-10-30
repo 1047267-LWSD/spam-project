@@ -82,7 +82,7 @@ async function loadDocs() {
     time.textContent = response['time'];
     message.textContent = response['message'];
     confidence.textContent = "Confidence: " + response['confidence'];
-    type.textContent = "Spam type: "+ response['type'];
+    type.textContent = "Scam type: "+ response['type'];
 
    let votingSection = document.createElement('div');
    votingSection.setAttribute('class', 'votingSection');
@@ -91,8 +91,8 @@ async function loadDocs() {
    let downvoteBtn = document.createElement('button');
    upvoteBtn.setAttribute('class', 'upvote');
    downvoteBtn.setAttribute('class', 'downvote');
-   upvoteBtn.innerHTML = `↑<span>${response['upvotes']}</span>`
-   downvoteBtn.innerHTML = `↓<span>${response['downvotes']}</span>`
+   upvoteBtn.innerHTML = `👍<span>${response['upvotes']}</span>`
+   downvoteBtn.innerHTML = `👎<span>${response['downvotes']}</span>`
    upvoteBtn.dataset.postId = response['id'];
    downvoteBtn.dataset.postId = response['id'];
 
