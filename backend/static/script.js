@@ -221,6 +221,7 @@ import { db } from './firebase-config.js';
     detect(spam);
     });
     customButton.addEventListener('click', () => {
+    reset();
     img.click();
 });
     img.addEventListener('change',function() {
