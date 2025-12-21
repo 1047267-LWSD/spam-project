@@ -48,7 +48,7 @@ createUserWithEmailAndPassword(auth, email, password)
     } catch (err) {
       console.error("Failed to set display name:", err);
     }
-    window.location.href = '/survey';
+    window.location.href = '/homepage';
   })
   .catch((error) => {
     const errorCode = error.code;
