@@ -48,7 +48,7 @@ createUserWithEmailAndPassword(auth, email, password)
     } catch (err) {
       console.error("Failed to set display name:", err);
     }
-    window.location.href = '/homepage';
+    window.location.href = '/index';
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -88,7 +88,7 @@ createUserWithEmailAndPassword(auth, email, password)
   });
 export function logout() {
   signOut(auth).then(() => {
-    window.location.href = "/landing";
+    window.location.href = "/";
   }).catch((error) => {
     console.error("Logout failed:", error);
   });

@@ -82,7 +82,7 @@ async function loadDocs() {
     time.textContent = response['time'];
     message.textContent = response['message'];
     confidence.textContent = "Confidence: " + response['confidence'];
-    type.textContent = "Scam type: "+ response['type'];
+    type.textContent = "spam type: "+ response['type'];
 
    let votingSection = document.createElement('div');
    votingSection.setAttribute('class', 'votingSection');

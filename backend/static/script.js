@@ -20,7 +20,7 @@ import { db } from './firebase-config.js';
     const category = document.createElement('h3');
     const confcat = document.createElement('div');
     const results = document.createElement('div');
-    const description = document.getElementById('scam-description');
+    const description = document.getElementById('spam-description');
     const bottom = document.createElement('div');
     bottom.setAttribute('id','results');
     description.style.display = 'none';
@@ -85,7 +85,7 @@ import { db } from './firebase-config.js';
             });
             const data = await response.json();
             if (data.prediction == 'spam'){
-            predicted.innerHTML = `Your message is most likely: <span style = 'color:red'>SCAM</span>`;
+            predicted.innerHTML = `Your message is most likely: <span style = 'color:red'>spam</span>`;
             }
             else {
             predicted.textContent = 'Your message is most likely: SAFE';
@@ -125,7 +125,7 @@ import { db } from './firebase-config.js';
             description.style.display = 'none'; 
             if (data.type == 'personal') {
                 const summary = document.createElement('p');
-                summary.textContent = 'Our model has detected your message as a personal scam message. This means your message could be showing signs of:'
+                summary.textContent = 'Our model has detected your message as a personal spam message. This means your message could be showing signs of:'
                 const listofels = document.createElement('ul');
                 const element1 = document.createElement('li');
                 const element2 = document.createElement('li');
@@ -140,7 +140,7 @@ import { db } from './firebase-config.js';
             }
             else if (data.type == 'lottery') {
                 const summary = document.createElement('p');
-                summary.textContent = 'Our model has detected your message as a lottery or prize scam. This means your message could be showing signs of:'
+                summary.textContent = 'Our model has detected your message as a lottery or prize spam. This means your message could be showing signs of:'
                 const listofels = document.createElement('ul');
                 const element1 = document.createElement('li');
                 const element2 = document.createElement('li');
@@ -155,7 +155,7 @@ import { db } from './firebase-config.js';
             }
             else if (data.type == 'service') {
                 const summary = document.createElement('p');
-                summary.textContent = 'Our model has detected your message as a service scam. This means your message could be showing signs of:'
+                summary.textContent = 'Our model has detected your message as a service spam. This means your message could be showing signs of:'
                 const listofels = document.createElement('ul');
                 const element1 = document.createElement('li');
                 const element2 = document.createElement('li');

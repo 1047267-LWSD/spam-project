@@ -132,7 +132,7 @@ h1 {
     flex-wrap: wrap;
     gap: 2px;
 }
-#scam-description{
+#spam-description{
     flex-direction: column;
     background-color: antiquewhite;
     padding: 20px;
