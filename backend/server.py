@@ -7,6 +7,8 @@ app = Flask(__name__,
             template_folder=os.path.join(BASE_DIR, 'templates'),
             static_folder=os.path.join(BASE_DIR, 'static'))
 @app.route('/')
+def landing():
+    return render_template('register.html')
 @app.route('/index')
 def home():
     return render_template('homepage.html')
