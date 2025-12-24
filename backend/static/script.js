@@ -95,6 +95,8 @@ onAuthStateChanged(auth, (user) => {
                 body: JSON.stringify({text: textToSend})
             });
             const data = await response.json();
+             console.log("Full response:", data);
+             console.log("Word contributions:", data.word_contributions); 
             if (data.prediction == 'spam'){
             predicted.innerHTML = `Your message is most likely: <span style = 'color:red'>SPAM</span>`;
             }
