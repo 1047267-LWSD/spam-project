@@ -88,7 +88,7 @@ createUserWithEmailAndPassword(auth, email, password)
   });
 export function logout() {
   signOut(auth).then(() => {
-    window.location.href = "/";
+    window.location.href = "/registration";
   }).catch((error) => {
     console.error("Logout failed:", error);
   });

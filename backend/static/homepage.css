@@ -96,7 +96,9 @@ h1 {
     text-decoration: none;
     text-align: center;
 }
-
+#app-name {
+    padding: 10px;
+}
 .nav-links{
     display: flex;
     justify-content: space-around;

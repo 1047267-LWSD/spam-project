@@ -1,5 +1,16 @@
 import { addDoc, collection } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 import { db } from './firebase-config.js';
+import { auth } from "/static/auth.js";
+let currentUser = null;
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        currentUser = user;
+        console.log("User logged in:", user.displayName);
+    } else {
+        currentUser = null;
+    }
+});
     document.addEventListener('DOMContentLoaded', () => {   
     const spam = document.getElementById('spam-input');
     const button = document.getElementById('check');
@@ -85,7 +96,7 @@ import { db } from './firebase-config.js';
             });
             const data = await response.json();
             if (data.prediction == 'spam'){
-            predicted.innerHTML = `Your message is most likely: <span style = 'color:red'>spam</span>`;
+            predicted.innerHTML = `Your message is most likely: <span style = 'color:red'>SPAM</span>`;
             }
             else {
             predicted.textContent = 'Your message is most likely: SAFE';
@@ -253,6 +264,7 @@ import { db } from './firebase-config.js';
             message: textToReport,
             prediction: prediction,
             confidence: confidence,
+            reportedBy: currentUser.email,
             type: type,
             timestamp: new Date().toISOString(),
             upvotes: 0,

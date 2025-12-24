@@ -65,7 +65,7 @@ h1 {
     color: rgb(93, 93, 93);
 }
 
-.confidence, .type {
+.confidence, .type, .reportedBy{
     color: rgb(82, 142, 168);
 }
 
