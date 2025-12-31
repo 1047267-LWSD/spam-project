@@ -137,31 +137,83 @@ h1 {
 
 
 @media (max-width: 768px) {
-    .navbar {
-        gap: 10px;  
-        flex-direction: column;  
-        padding: 15px;
-        align-items: center;
+   
+    body {
+        overflow-x: hidden; 
+        padding: 0;
+        margin: 0;
     }
     
-    .logo {
-        width: 100px;
-        height: 100px;
-        display: flex;
-        padding: 0px;
+    * {
+        max-width: 100%; 
+        box-sizing: border-box;
     }
     
+ 
+    .description-box, 
+    .description {
+        padding: 20px 15px !important;
+        margin: 15px 10px !important;
+        font-size: 15px !important;
+        line-height: 1.6 !important;
+    }
+    
+   
+    button, 
+    .voice-btn,
+    a[href] button {
+        width: 100% !important;
+        min-height: 50px !important;
+        margin: 10px 0 !important;
+        padding: 15px !important;
+        font-size: 16px !important;
+    }
+    
+  
     .nav-links {
-        gap: 50px; 
-        flex-direction: row;  
-        width: 100%;
-        align-self: center;
-        align-items: center;
-        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
     }
     
     .nav-links a {
-        width: 75%; 
-        text-align: center;
+        margin: 5px 0 !important;
+    }
+    
+
+    .forum-post,
+    .post-content,
+    .spam-message {
+        width: calc(100% - 20px) !important;
+        margin: 10px !important;
+        padding: 15px !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    
+    p, div, span {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+    
+
+    h1 { font-size: 26px !important; }
+    h2 { font-size: 22px !important; }
+    h3 { font-size: 18px !important; }
+
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+    
+   
+    input, 
+    textarea {
+        width: 100% !important;
+        padding: 12px !important;
+        font-size: 16px !important; 
     }
 }
