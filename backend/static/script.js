@@ -266,7 +266,7 @@ onAuthStateChanged(auth, (user) => {
             message: textToReport,
             prediction: prediction,
             confidence: confidence,
-            reportedBy: currentUser.email,
+            reportedBy: currentUser.displayName,
             type: type,
             timestamp: new Date().toISOString(),
             upvotes: 0,
