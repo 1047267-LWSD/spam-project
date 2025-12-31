@@ -1,5 +1,5 @@
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 import { db } from './firebase-config.js';
 import { auth } from "/static/auth.js";
 document.addEventListener('DOMContentLoaded', () => {
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let numTimes = 0;
         docs.forEach((d) => {
             console.log(d.data().reportedBy)
-            if (d.data().reportedBy == user.email) {
+            if (d.data().reportedBy == user.displayName) {
                 numTimes += 1;
             }
         });
