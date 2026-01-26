@@ -230,8 +230,24 @@ onAuthStateChanged(auth, (user) => {
         currentMessage = '';
 
     }
-    button.addEventListener('click', function() {
-    detect(spam);
+    button.addEventListener('click', async function() {
+    await detect(spam);
+     let storeText = spam.value;
+     try {
+        await addDoc(collection(db, "spam-mesages"),{
+            message: storeText,
+            prediction: prediction,
+
+        });
+        alert('Reported Successfully!');
+        reset();
+       }
+       catch (error){
+        alert('Error reporting message');
+        console.error('Error reporting message', error);
+        reset();
+       }
+
     });
     customButton.addEventListener('click', () => {
     reset();
@@ -246,14 +262,31 @@ onAuthStateChanged(auth, (user) => {
     shapped.textContent = '';
     process_img();
     });
-    upload.addEventListener('click', function() {
+    //store in firebase
+    upload.addEventListener('click', async function() {
     if (ocrtext == '') {
         alert('Please upload a valid image')
     }
     else {
-    detect(ocrtext);
+    await detect(ocrtext);
     resultsContainer.style.display = 'flex';
+    let storeText = ocrtext;
+       try {
+        await addDoc(collection(db, "spam-mesages"),{
+            message: storeText,
+            prediction: prediction,
+
+        });
+        alert('Reported Successfully!');
+        reset();
+       }
+       catch (error){
+        alert('Error reporting message');
+        console.error('Error reporting message', error);
+        reset();
+       }
     }
+
     });
     report.addEventListener('click', async() => {
        let textToReport = currentMessage;
