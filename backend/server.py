@@ -9,6 +9,9 @@ app = Flask(__name__,
 @app.route('/')
 def landing():
     return render_template('landing-page.html')
+@app.route('/free-spam')
+def free_spam():
+    return render_template('free-spam.html')
 @app.route('/registration')
 def reg():
     return render_template('register.html')

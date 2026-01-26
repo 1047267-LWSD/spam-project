@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel = 'stylesheet' href="{{ url_for('static', filename='styles.css') }}"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">  
+    <title>Detection</title>
+</head>
+<body>
+   <div class = 'navbar'> 
+        <div class = 'logo'>
+            <img src = '/static/Logo.png'></img>
+        </div>
+        <h2 id = 'app-name'>The Spam Project</h2>
+        <div class = 'nav-links'>
+        <a href = '/free-spam'>Spam Detector</a>
+        <a href = '/registration'>Sign Up</a>
+        <a href = '/login'>Login </a>
+        </div>
+    </div>
+    <h1>Spam Detector</h1>
+    <div class = "description-box">
+     <p class = 'description'>Have you received a suspicious text message? Our AI-powered detectors with over 90% accuracy can analyze your text message and determine whether it is a spam or not. Just paste your text message or upload a screenshot, and we’ll provide you with a prediction of what type of message you’re dealing with and suspicious words in your text.</p>
+     <p>Have you found a spam with our detector? Be sure to anonymously report it to our community forum to help other users learn about spam threats!</p>
+     <a id = 'encouragement' href = '/forum'>Discover messages detected by other users here</a>
+    </div>
+    <div id = 'option-buttons'>
+        <button id = 'ocr-button'>📸 Upload an Image</button>
+        <button id = 'text-button'>💬 Copy &amp; Paste a text </button>
+    </div>
+    <form>
+    <div id = 'ocr-form' class = 'upload-form'>
+    <input type="file" id="myFile" name="filename" style = 'display:none'>
+    <button type="button" id="customFileButton">Choose File</button>
+    <span id="fileName">No file chosen</span>
+    <button type="button" id="upload">Submit Image</button>
+    </div>
+    </form>
+    <div id = 'text-form' class = 'upload-form'>
+    <textarea type = 'text' id = 'spam-input' name = 'spam-input' placeholder = 'Enter a valid text message you wish to check (please enter at least 150 characters for an accurate prediction)'></textarea>
+    <button id = 'check'> Submit Message</button>
+    </div>
+    <div id = 'spam-description'></div>
+    <div id = 'results-container'>
+    </div>
+    <button style = 'display:none' id = 'report'>Report to Forum</button>
+    <button style = 'display:none' id = 'cancel'>Cancel</button>
+
+</body>
+<script type="module" src="{{ url_for('static', filename='script.js') }}?v=2"></script>
+<script type="module" src="{{ url_for('static', filename='firebase-config.js') }}"></script>
+
+</html>
+
