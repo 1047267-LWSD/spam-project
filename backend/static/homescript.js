@@ -1,6 +1,4 @@
-import { addDoc, collection } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
-import { db } from './firebase-config.js';
 import { auth } from "/static/auth.js";
 let currentUser = null;
 onAuthStateChanged(auth, (user) => {
@@ -256,31 +254,7 @@ onAuthStateChanged(auth, (user) => {
     }
     });
     report.addEventListener('click', async() => {
-       let textToReport = currentMessage;
-        if (!textToReport) {
-            alert('No message to report!');
-            return;
-        }
-       try {
-        await addDoc(collection(db, "reports"),{
-            message: textToReport,
-            prediction: prediction,
-            confidence: confidence,
-            reportedBy: currentUser.displayName,
-            type: type,
-            timestamp: new Date().toISOString(),
-            upvotes: 0,
-            downvotes: 0
-
-        });
-        alert('Reported Successfully!');
-        reset();
-       }
-       catch (error){
-        alert('Error reporting message');
-        console.error('Error reporting message', error);
-        reset();
-       }
+       window.location.href = 'registration';
     });
     cancel.addEventListener('click', function() {
         reset();
