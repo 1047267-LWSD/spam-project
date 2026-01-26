@@ -12,7 +12,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 15px 30px;
-    background-color: #bae6fd; /* Light cyan/blue */
+    background-color: rgb(143, 238, 255);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -36,11 +36,11 @@ body {
 
 .nav-links a {
     padding: 10px 20px;
-    background-color: #60a5fa;
+    background-color: rgb(76, 195, 255);
     color: white;
     text-decoration: none;
     border-radius: 8px;
-    font-weight: 600;
+    font-weight: 400;
     transition: background-color 0.2s ease;
 }
 
@@ -219,9 +219,15 @@ h1 {
         box-sizing: border-box;
     }
     .navbar {
-        flex-direction: column;
-        padding: 10px;
-        gap: 10px;
+        background-color: rgb(143, 238, 255);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+        position: relative;
+        box-sizing: border-box;
+        width: 100%;
     }
     
     .logo img {

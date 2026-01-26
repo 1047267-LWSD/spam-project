@@ -59,20 +59,17 @@ h1 {
     gap: 200px;
     margin: 15px;
 }
-.nav-links a:hover{
+.nav-links a:hover {
     background-color: rgb(63, 161, 209);
 }
 
 .navbar {
-    background-color: rgb(143, 238, 255);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-    position: relative;
-    box-sizing: border-box;
-    width: 100%;
+    padding: 15px 30px;
+    background-color: rgb(143, 238, 255);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 .logo {
     width: 100px;
@@ -87,23 +84,22 @@ h1 {
     height: 100%;
     object-fit: contain;
 }
-.nav-links a{
-    padding: 20px;
-    width: 150px;
-    color: rgb(255, 255, 255);
+.nav-links a {
+    padding: 10px 20px;
     background-color: rgb(76, 195, 255);
-    border-radius: 20px;
+    color: white;
     text-decoration: none;
-    text-align: center;
+    border-radius: 8px;
+    font-weight: 400;
+    transition: background-color 0.2s ease;
 }
 #app-name {
     padding: 10px;
 }
-.nav-links{
+.nav-links {
     display: flex;
-    justify-content: space-around;
-    gap: 150px;
-    margin: 10px;
+    gap: 15px;
+    align-items: center;
 }
 @media (max-width: 768px) {
    
