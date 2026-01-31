@@ -1,6 +1,7 @@
 import cv2
 import pytesseract
 import numpy as np
+pytesseract.pytesseract.tesseract_cmd = os.environ.get('TESSERACT_CMD', 'tesseract')
 
 
 def img_to_text(image):
