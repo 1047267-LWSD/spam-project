@@ -1,6 +1,7 @@
 import cv2
 import pytesseract
 import numpy as np
+import os
 pytesseract.pytesseract.tesseract_cmd = os.environ.get('TESSERACT_CMD', 'tesseract')
 
 
