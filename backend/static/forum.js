@@ -56,7 +56,6 @@ async function loadDocs() {
     let docItem = {}
     docItem['id'] = d.id;
     docItem['message'] = d.data().message;
-    docItem['reportedBy'] = d.data().reportedBy;
     docItem['prediction'] = d.data().prediction;
     docItem['confidence'] = d.data().confidence;
     docItem['type'] = d.data().type;
@@ -74,8 +73,6 @@ async function loadDocs() {
     time.setAttribute('class','time');
     let message = document.createElement('p');
     message.setAttribute('class','message');
-    let reportedBy = document.createElement('p');
-    reportedBy.setAttribute('class', 'reportedBy');
     let confidence = document.createElement('p');
     confidence.setAttribute('class','confidence');
     let type = document.createElement('p');
@@ -84,7 +81,6 @@ async function loadDocs() {
     details.setAttribute('class', 'details');
     time.textContent = response['time'];
     message.textContent = response['message'];
-    reportedBy.textContent = "Reported By: " + response['reportedBy'];
     confidence.textContent = "Confidence: " + response['confidence'];
     type.textContent = "Spam Type: "+ response['type'];
 
@@ -105,7 +101,6 @@ async function loadDocs() {
 
     post.appendChild(time);
     post.appendChild(message);
-    details.appendChild(reportedBy);
     details.appendChild(confidence);
     details.appendChild(type);
     details.appendChild(votingSection);

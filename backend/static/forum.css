@@ -16,13 +16,14 @@ body {
 
 h1 {
     text-align: center;
-    background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/static/forum.jpg);
+    background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/static/spam.png);
     background-position: center;
     background-size: cover;
     padding: 100px;
     color: white;
     margin: 0 auto;
     margin-bottom: 15px;
+    width: 100%
     
 
 }

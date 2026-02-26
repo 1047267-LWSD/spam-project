@@ -16,10 +16,9 @@
         </div>
         <h2 id = 'app-name'>The Spam Project</h2>
         <div class = 'nav-links'>
-        <a href = '/'> Home </a>
-        <a href = '/free-spam'>Spam Detector</a>
-        <a href = '/registration'>Sign Up</a>
-        <a href = '/login'>Login </a>
+        <a href = '/'>Home</a>
+        <a href = '/detector'>Spam Detector</a>
+        <a href = '/forum'>Community Forum</a>
         </div>
     </div>
     <h1>Spam Detector</h1>
@@ -47,12 +46,12 @@
     <div id = 'spam-description'></div>
     <div id = 'results-container'>
     </div>
-    <button style = 'display:none' id = 'report'>Report to Forum</button>
-    <button style = 'display:none' id = 'cancel'>Cancel</button>
 
 </body>
 <script type="module" src="{{ url_for('static', filename='homescript.js') }}?v=2"></script>
+
 <script type="module" src="{{ url_for('static', filename='firebase-config.js') }}"></script>
+
 
 </html>
 

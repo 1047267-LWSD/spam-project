@@ -1,16 +1,5 @@
 import { addDoc, collection } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 import { db } from './firebase-config.js';
-import { auth } from "/static/auth.js";
-let currentUser = null;
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        currentUser = user;
-        console.log("User logged in:", user.displayName);
-    } else {
-        currentUser = null;
-    }
-});
     document.addEventListener('DOMContentLoaded', () => {   
     const spam = document.getElementById('spam-input');
     const button = document.getElementById('check');
@@ -38,7 +27,7 @@ onAuthStateChanged(auth, (user) => {
     const analysisdescription = document.createElement('h3');
     const key = document.createElement('p');
     key.setAttribute('id','key');
-    key.innerHTML = "<span style = 'background-color: yellow'>highlighted words</span> are classified as suspicious";
+    key.innerHTML = "<span style = 'background-color: yellow'> highlighted words</span> are classified as suspicious";
     analysisdescription.textContent = "Suspicious words in your message";
     const analyzed = document.createElement('div');
     analyzed.appendChild(analysisdescription);
@@ -233,20 +222,12 @@ onAuthStateChanged(auth, (user) => {
     button.addEventListener('click', async function() {
     await detect(spam);
      let storeText = spam.value;
-     try {
+
         await addDoc(collection(db, "spam-mesages"),{
             message: storeText,
             prediction: prediction,
 
         });
-        alert('Reported Successfully!');
-        reset();
-       }
-       catch (error){
-        alert('Error reporting message');
-        console.error('Error reporting message', error);
-        reset();
-       }
 
     });
     customButton.addEventListener('click', () => {
@@ -264,27 +245,20 @@ onAuthStateChanged(auth, (user) => {
     });
     //store in firebase
     upload.addEventListener('click', async function() {
+    console.log("Image: " + ocrtext);
     if (ocrtext == '') {
-        alert('Please upload a valid image')
+        alert('Please upload a valid image');
     }
     else {
     await detect(ocrtext);
     resultsContainer.style.display = 'flex';
     let storeText = ocrtext;
-       try {
+
         await addDoc(collection(db, "spam-mesages"),{
             message: storeText,
             prediction: prediction,
 
         });
-        alert('Reported Successfully!');
-        reset();
-       }
-       catch (error){
-        alert('Error reporting message');
-        console.error('Error reporting message', error);
-        reset();
-       }
     }
 
     });
@@ -299,7 +273,6 @@ onAuthStateChanged(auth, (user) => {
             message: textToReport,
             prediction: prediction,
             confidence: confidence,
-            reportedBy: currentUser.displayName,
             type: type,
             timestamp: new Date().toISOString(),
             upvotes: 0,
