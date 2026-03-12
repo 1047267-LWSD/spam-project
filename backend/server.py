@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from pipeline import spam_detect
-from pipeline_lstm import spam_detect_lstm
+spam_detect_lstm = None
 from ocr import img_to_text
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -39,21 +39,24 @@ def predict():
                 })
     except Exception as e:
         return jsonify({"Error": str(e)})
-@app.route('/predict/lstm', methods = ['POST'])
+@app.route('/predict/lstm', methods=['POST'])
 def lstm_predict():
+    global spam_detect_lstm
+    if spam_detect_lstm is None:
+        from pipeline_lstm import spam_detect_lstm as _lstm
+        spam_detect_lstm = _lstm
     try:
         data = request.get_json(force=True)
-        text = data.get('text','')
+        text = data.get('text', '')
         prediction = spam_detect_lstm(text)
         return jsonify({
             "prediction": prediction.get('prediction', 'unknown'),
             "confidence": prediction.get('confidence', 0),
             "word_contributions": prediction.get('word_contributions', {}),
-            "type": prediction.get('spam_type', 'N/A')  
+            "type": prediction.get('spam_type', 'N/A')
         })
     except Exception as e:
         return jsonify({'Error': str(e)})
-        
 @app.route('/predict/convert', methods = ['GET', 'POST'])
 def get_predict():
     if request.method == 'POST':
