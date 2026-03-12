@@ -45,7 +45,7 @@ import { db } from './firebase-config.js';
     results.appendChild(predicted);
     results.appendChild(confcat);
     ocrForm.style.display = 'none';
-    
+    txtForm.style.display = 'flex';
     let prediction = '';
     let confidence = '';
     let type = '';
@@ -308,12 +308,12 @@ import { db } from './firebase-config.js';
     cancel.addEventListener('click', function() {
         reset();
     });
-    ocrBtn.addEventListener('click', function(){
-        ocrForm.style.display = 'flex';
-        ocrForm.scrollIntoView({ behavior: 'smooth', block: 'end'});
-        txtForm.style.display = 'none';
-        reset();
-    });
+    // ocrBtn.addEventListener('click', function(){
+    //     ocrForm.style.display = 'flex';
+    //     ocrForm.scrollIntoView({ behavior: 'smooth', block: 'end'});
+    //     txtForm.style.display = 'none';
+    //     reset();
+    // });
     txtBtn.addEventListener('click', function(){
         txtForm.style.display = 'flex';
         txtForm.scrollIntoView({ behavior: 'smooth', block: 'end'});
