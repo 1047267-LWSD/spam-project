@@ -8,3 +8,6 @@ shap==0.44.1
 opencv-python-headless==4.7.0.72
 Pillow==10.0.0
 firebase-admin==6.2.0
+tensorflow==2.15.0
+keras==2.15.0
+tf-keras==2.15.0

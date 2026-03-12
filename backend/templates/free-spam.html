@@ -26,10 +26,17 @@
      <p class = 'description'>Have you received a suspicious text message? Our AI-powered detectors with over 90% accuracy can analyze your text message and determine whether it is a spam or not. Just paste your text message or upload a screenshot, and we’ll provide you with a prediction of what type of message you’re dealing with and suspicious words in your text.</p>
      <p>Have you found a spam with our detector? Be sure to anonymously report it to our community forum to help other users learn about spam threats!</p>
      <a id = 'encouragement' href = '/registration'>Discover messages detected by other users here</a>
-    </div>
+    </div> 
     <div id = 'option-buttons'>
-        <button id = 'ocr-button'>📸 Upload an Image</button>
         <button id = 'text-button'>💬 Copy &amp; Paste a text </button>
+        <div id = 'model-dropdown'>
+        <label>Choose your model </label>
+        <select name = 'model' id = 'model'>
+            <option value="lr" selected>Fast Detection</option>
+            <option value="lstm">Thinking Detection</option>
+        </select>
+        </div>
+        <button id = 'ocr-button'>📸 Upload an Image</button>
     </div>
     <form>
     <div id = 'ocr-form' class = 'upload-form'>

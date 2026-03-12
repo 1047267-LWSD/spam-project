@@ -28,8 +28,15 @@
      <a id = 'encouragement' href = '/forum'>Discover messages detected by other users here</a>
     </div>
     <div id = 'option-buttons'>
-        <button id = 'ocr-button'>📸 Upload an Image</button>
         <button id = 'text-button'>💬 Copy &amp; Paste a text </button>
+        <div id = 'model-dropdown'>
+        <label>Choose your model </label>
+        <select name = 'model' id = 'model'>
+            <option value="lr" selected>Fast Detection</option>
+            <option value="lstm">Thinking Detection</option>
+        </select>
+        </div>
+        <button id = 'ocr-button'>📸 Upload an Image</button>
     </div>
     <form>
     <div id = 'ocr-form' class = 'upload-form'>

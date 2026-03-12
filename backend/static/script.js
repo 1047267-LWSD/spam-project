@@ -21,6 +21,7 @@ import { db } from './firebase-config.js';
     const confcat = document.createElement('div');
     const results = document.createElement('div');
     const description = document.getElementById('spam-description');
+    const dropdown = document.getElementById('model');
     const bottom = document.createElement('div');
     bottom.setAttribute('id','results');
     description.style.display = 'none';
@@ -51,6 +52,20 @@ import { db } from './firebase-config.js';
     let type = '';
     let ocrtext = '';
     let currentMessage = '';
+    let path = '';
+    function getModelPath() {
+    let model = dropdown.value;
+    if (model == 'lstm') {
+        path = '/predict/lstm';
+    }
+    else {
+        path = '/predict/detect';
+    }
+    }
+    getModelPath();
+    dropdown.addEventListener('change', function(){
+        getModelPath();
+    });
     async function process_img() {
        const file = img.files[0];
        if(!file) {
@@ -76,7 +91,7 @@ import { db } from './firebase-config.js';
         let textToSend = typeof message === 'string' ? message : message.value;
         currentMessage = textToSend;
         try {
-            const response = await fetch('/predict/detect', {
+            const response = await fetch(path, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -86,7 +101,10 @@ import { db } from './firebase-config.js';
             const data = await response.json();
              console.log("Full response:", data);
              console.log("Word contributions:", data.word_contributions); 
-            if (data.prediction == 'spam'){
+            if (data.prediction == 'smishing'){
+            predicted.innerHTML = `Your message is most likely: <span style = 'color:red'>SCAM</span>`;
+            }
+            else if (data.prediction == 'spam'){
             predicted.innerHTML = `Your message is most likely: <span style = 'color:red'>SPAM</span>`;
             }
             else {
@@ -112,7 +130,7 @@ import { db } from './firebase-config.js';
                 let cleanWord = word.toLowerCase().replace(/[^\w]/g, '');
                 console.log(`Original: "${word}", Clean: "${cleanWord}", Has contribution: ${!!word_contributions[cleanWord]}, Value: ${word_contributions[cleanWord]}`);
                 if(word_contributions[cleanWord] && word_contributions[cleanWord] > 0) {
-                    return `<span style="background-color: yellow">${cleanWord}</span>`;
+                    return `<span style="background-color: yellow">${word}</span>`;
                 }
                 else {
                     return word;
@@ -188,7 +206,7 @@ import { db } from './firebase-config.js';
             if (prediction == 'ham') {
                 return;
             }
-            if (prediction == 'spam') {
+            if (prediction == 'spam' || prediction == 'smishing') {
                 report.style.display = 'block';
                 cancel.style.display = 'block';
             }
@@ -204,7 +222,7 @@ import { db } from './firebase-config.js';
     , 500);
     }
     function reset() {
-        spam.value = null;
+        spam.value = '';
         ocrtext = '';
         img.value = null;
         report.style.display = 'none';
