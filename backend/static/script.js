@@ -45,7 +45,6 @@ import { db } from './firebase-config.js';
     results.appendChild(predicted);
     results.appendChild(confcat);
     ocrForm.style.display = 'none';
-    txtForm.style.display = 'none';
     
     let prediction = '';
     let confidence = '';
