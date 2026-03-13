@@ -293,6 +293,7 @@ import { db } from './firebase-config.js';
             message: textToReport,
             prediction: prediction,
             confidence: confidence,
+            model: model,
             type: type,
             timestamp: new Date().toISOString(),
             upvotes: 0,
