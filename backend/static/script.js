@@ -251,6 +251,7 @@ import { db } from './firebase-config.js';
         await addDoc(collection(db, "spam-mesages"),{
             message: storeText,
             prediction: prediction,
+            model: dropdown.value
 
         });
 
@@ -298,7 +299,6 @@ import { db } from './firebase-config.js';
             message: textToReport,
             prediction: prediction,
             confidence: confidence,
-            model: dropdown.value,
             type: type,
             timestamp: new Date().toISOString(),
             upvotes: 0,
