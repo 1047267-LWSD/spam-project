@@ -211,7 +211,7 @@ import { db } from './firebase-config.js';
                 results.appendChild(description);
             }
             if (prediction == 'ham') {
-                return;
+                cancel.style.display = 'block';
             }
             if (prediction == 'spam' || prediction == 'smishing') {
                 report.style.display = 'block';
