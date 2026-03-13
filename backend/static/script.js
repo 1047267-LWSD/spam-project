@@ -8,6 +8,7 @@ import { db } from './firebase-config.js';
     const upload = document.getElementById('upload');
     const report = document.getElementById('report');
     const cancel = document.getElementById('cancel');
+    const incorrect = document.getElementById('incorrect');
     const customButton = document.getElementById('customFileButton');
     const fileNameDisplay = document.getElementById('fileName');
     const ocrBtn = document.getElementById('ocr-button');
@@ -212,6 +213,7 @@ import { db } from './firebase-config.js';
             }
             if (prediction == 'ham') {
                 cancel.style.display = 'block';
+                incorrect.style.display = 'block';
             }
             if (prediction == 'spam' || prediction == 'smishing') {
                 report.style.display = 'block';
@@ -234,6 +236,7 @@ import { db } from './firebase-config.js';
         img.value = null;
         report.style.display = 'none';
         cancel.style.display = 'none';
+        incorrect.style.display = 'none';
         resultsContainer.style.display = 'none';
         prediction = '';
         confidence = '';
@@ -244,6 +247,23 @@ import { db } from './firebase-config.js';
         currentMessage = '';
 
     }
+    incorrect.addEventListener('click', async function() {
+        let storeText = currentMessage;
+        let correctMessage = ''
+        if (prediction == 'ham') {
+            correctMessage = 'spam or smishing'
+        }
+        else {
+            correctMessage = 'ham'
+        }
+        await addDoc(collection(db, 'incorrect-messages'), {
+            message: storeText,
+            prediction: prediction,
+            correct: correctMessage,
+            model: dropdown.value
+        })
+        alert ('Thank you for your feedback!');
+    })
     button.addEventListener('click', async function() {
     await detect(spam);
      let storeText = spam.value;
