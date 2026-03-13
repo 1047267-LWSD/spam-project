@@ -54,7 +54,10 @@ import { db } from './firebase-config.js';
     let path = '';
     function getModelPath() {
     let model = dropdown.value;
-    if (model == 'lstm') {
+    if (model == 'boost') {
+        path = '/predict/booster';
+    }
+    else if (model == 'lstm') {
         path = '/predict/lstm';
     }
     else {
