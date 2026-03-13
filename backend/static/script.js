@@ -42,6 +42,7 @@ import { db } from './firebase-config.js';
     confcat.appendChild(category);
     bottom.appendChild(report);
     bottom.appendChild(cancel);
+    bottom.appendChild(incorrect);
     confcat.appendChild(bottom);
     results.appendChild(predicted);
     results.appendChild(confcat);
@@ -212,12 +213,15 @@ import { db } from './firebase-config.js';
                 results.appendChild(description);
             }
             if (prediction == 'ham') {
-                cancel.style.display = 'block';
                 incorrect.style.display = 'block';
+                cancel.style.display = 'block';
+                
             }
             if (prediction == 'spam' || prediction == 'smishing') {
+                incorrect.style.display = 'block';
                 report.style.display = 'block';
                 cancel.style.display = 'block';
+                
             }
         }
         catch (error){

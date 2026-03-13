@@ -196,6 +196,16 @@ h1 {
      background-color: rgb(128, 156, 208);
  }
 
+ #incorrect:hover { 
+     background-color: rgb(128, 156, 208);
+     border: none;
+     border-radius: 15px;
+ }
+
+ #incorrect {
+    background-color: rgb(159, 193, 255);
+ }
+
  #cancel {
     background-color: rgb(204, 68, 68);
     color: white;
