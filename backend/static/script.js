@@ -248,7 +248,7 @@ import { db } from './firebase-config.js';
     await detect(spam);
      let storeText = spam.value;
 
-        await addDoc(collection(db, "spam-mesages"),{
+        await addDoc(collection(db, "spam-messages"),{
             message: storeText,
             prediction: prediction,
             model: dropdown.value
