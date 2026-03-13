@@ -70,7 +70,7 @@ def booster_predict():
         prediction = booster_detect(text)
         return jsonify({
             "prediction": prediction.get('prediction', 'unknown'),
-            "confidence": prediction.get('confidence', 0),
+            "confidence": float(prediction.get('confidence', 0)),
             "word_contributions": prediction.get('word_contributions', {}),
             "type": prediction.get('spam_type', 'N/A')
         })

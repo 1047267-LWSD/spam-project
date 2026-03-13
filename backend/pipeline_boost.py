@@ -54,6 +54,7 @@ def feature_extraction(text):
 
 def boost_detect(text):
     spam_dictionary = {}
+    spam_dictionary['word_contributions'] = {}
     text_in_array = [text]
     vec_tfidf = spam_vec.transform(text_in_array)
     feature_indices = vec_tfidf.nonzero()[1]

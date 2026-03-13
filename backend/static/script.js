@@ -82,6 +82,11 @@ import { db } from './firebase-config.js';
             body: formData
         });
         const data = await response.json();
+        console.log("Full response:", JSON.stringify(data));
+        if (!data.word_contributions) {
+            console.error("No word_contributions in response:", data);
+            return;
+        }
         ocrtext = data.text || 'No text detected.';
        }
        catch (error){
@@ -125,7 +130,7 @@ import { db } from './firebase-config.js';
             prediction = data.prediction;
             confidence = `${(data.confidence*100).toFixed(2)}%`;
             type = data.type;
-            const word_contributions = data.word_contributions;
+            const word_contributions = data.word_contributions || {};
             let words = textToSend.split(/[\s\-\/,;:.!?()]+/);
             console.log(words)
             let highlightedText = words.map(word => {
@@ -215,7 +220,7 @@ import { db } from './firebase-config.js';
         }
         catch (error){
             console.error(error);
-            alert('Error Submitting Form');
+            alert('Error Submitting Form' + error.message);
         }
         textToSend = '';
          setTimeout(() => {
@@ -293,7 +298,7 @@ import { db } from './firebase-config.js';
             message: textToReport,
             prediction: prediction,
             confidence: confidence,
-            model: model,
+            model: dropdown.value,
             type: type,
             timestamp: new Date().toISOString(),
             upvotes: 0,
@@ -304,7 +309,7 @@ import { db } from './firebase-config.js';
         reset();
        }
        catch (error){
-        alert('Error reporting message');
+        alert('Error reporting message' + error.message);
         console.error('Error reporting message', error);
         reset();
        }
