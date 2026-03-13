@@ -11,3 +11,4 @@ firebase-admin==6.2.0
 tensorflow==2.15.0
 keras==2.15.0
 tf-keras==2.15.0
+xgboost==3.2.0
