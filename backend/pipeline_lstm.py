@@ -85,8 +85,7 @@ def feature_extraction(text):
     url_density = len(re.findall(r'http|www|bit\.ly|tinyurl', text.lower())) / len(text)
     currency_density = len(re.findall(r'\$|£|€|pound|dollar|gbp', text.lower())) / len(text) 
     return np.array([[length, ham, smishing, spam, caps_ratio, digit_ratio, punctuation_density, special_char_density, avg_word_length, repeated_word_density, url_density, currency_density]])
-
-
+print(feature_extraction('Win $100 BrunerO NCAA MENS https://www.pickhoops.com/BrunerHoopsMens Enter name&email &create new user passwd Group pswd smilesbydrbruner Reply STOP to opt out'))
 def spam_detect_lstm(text):
     spam_dictionary = {}
     text_in_array = [text]
@@ -121,6 +120,6 @@ def spam_detect_lstm(text):
     print(spam_dictionary)
     return spam_dictionary    
     
-print(spam_detect_lstm("Free entry in 2 a weekly competition! Text WIN to 80085 now!"))
-print(spam_encoder.classes_)
+# print(spam_detect_lstm("Free entry in 2 a weekly competition! Text WIN to 80085 now!"))
+# print(spam_encoder.classes_)
 
