@@ -137,14 +137,17 @@ import { db } from './firebase-config.js';
             const maxContribution = positiveValues.length ? Math.max(...positiveValues) : 0;
             const threshold = maxContribution * 0.1;  
             let words = textToSend.split(/[\s\-–—\/,;:.!?()]+/);
+           const stopWords = new Set(['to','is','or','be','you','the','a','an','and','of','in',
+                'it','for','on','we','i','this','that','your','my','are','was','if','no','not',
+                'so','do','re','am','as','at','by','from','with','our']);
+
             let highlightedText = words.map(word => {
                 let cleanWord = word.toLowerCase().replace(/[^\w]/g, '');
-                if(word_contributions[cleanWord] && word_contributions[cleanWord] > threshold) {
+                if (word_contributions[cleanWord] && word_contributions[cleanWord] > threshold
+                    && !stopWords.has(cleanWord)) {
                     return `<span style="background-color: yellow">${word}</span>`;
                 }
-                else {
-                    return word;
-                }
+                return word;
             }).join(' ');
             shapped.innerHTML = highlightedText;
             analyzed.style.display = 'flex';
