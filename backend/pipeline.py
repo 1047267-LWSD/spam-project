@@ -43,7 +43,15 @@ def spam_detect(text):
     spam_dictionary['confidence'] = spam_prob
     shap_values = explainer.shap_values(vec_text)
     words = spam_vec.get_feature_names_out()
-    spam_dictionary['word_contributions'] = {words[idx]: shap_values[list(spam_model.classes_).index(prediction)][0][idx] for idx in feature_indices}
+    class_idx = list(spam_model.classes_).index(prediction)
+    shap_row = shap_values[class_idx][0]
+    n_tfidf = len(words)
+    engineered_names = ['length', 'caps_ratio', 'digit_ratio', 'punctuation_density',
+                        'special_char_density', 'avg_word_length', 'repeated_word_density']
+    spam_dictionary['word_contributions'] = {words[idx]: float(shap_row[idx]) for idx in feature_indices}
+    spam_dictionary['feature_contributions'] = {
+        name: float(shap_row[n_tfidf + i]) for i, name in enumerate(engineered_names)
+    }
     if prediction == 'spam' or prediction == 'smishing':
         vec_cat = cat_vec.transform(text_in_array)
         cat_pred = cat_model.predict(vec_cat)[0]
@@ -60,7 +68,10 @@ def spam_detect(text):
         class_idx = list(spam_model.classes_).index(prediction)
         for idx in feature_indices:
             print(f"{words[idx]}: {shap_values[class_idx][0][idx]:.3f}")
-    return spam_dictionary      
+    print("--- engineered features ---")
+    for name, val in spam_dictionary['feature_contributions'].items():
+        print(f"{name}: {val:.3f}")
+    return spam_dictionary   
 
 spam_detect("Free entry in 2 a weekly competition! Text WIN to 80085 now!")
 spam_detect("Hey, are we still meeting for lunch today?")

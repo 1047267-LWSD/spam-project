@@ -1,0 +1,21 @@
+{
+  "name": "spam-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1047267-LWSD/spam-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/1047267-LWSD/spam-project/issues"
+  },
+  "homepage": "https://github.com/1047267-LWSD/spam-project#readme"
+}

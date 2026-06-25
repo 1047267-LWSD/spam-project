@@ -8,8 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">  
     <title>The Scam Project</title>
-    <link rel="manifest" href="/static/manifest.json">
-    <meta name="theme-color" content="#ffffff">
+
 </head>
 <body>
     <div class = 'navbar'> 
@@ -49,10 +48,5 @@
 <script type="module" src="{{ url_for('static', filename='script.js') }}?v=2"></script>
 <script type="module" src="{{ url_for('static', filename='firebase-config.js') }}"></script>
 <script type = 'module' src="{{ url_for('static', filename='landingpage.js') }}?v=2"></script>
-<script>
-    if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/static/service-worker.js");
-  }
-</script>
 </html>
 

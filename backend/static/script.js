@@ -133,12 +133,13 @@ import { db } from './firebase-config.js';
             confidence = `${(data.confidence*100).toFixed(2)}%`;
             type = data.type;
             const word_contributions = data.word_contributions || {};
-            let words = textToSend.split(/[\s\-\/,;:.!?()]+/);
-            console.log(words)
+            const positiveValues = Object.values(word_contributions).filter(v => v > 0);
+            const maxContribution = positiveValues.length ? Math.max(...positiveValues) : 0;
+            const threshold = maxContribution * 0.1;  
+            let words = textToSend.split(/[\s\-–—\/,;:.!?()]+/);
             let highlightedText = words.map(word => {
                 let cleanWord = word.toLowerCase().replace(/[^\w]/g, '');
-                console.log(`Original: "${word}", Clean: "${cleanWord}", Has contribution: ${!!word_contributions[cleanWord]}, Value: ${word_contributions[cleanWord]}`);
-                if(word_contributions[cleanWord] && word_contributions[cleanWord] > 0) {
+                if(word_contributions[cleanWord] && word_contributions[cleanWord] > threshold) {
                     return `<span style="background-color: yellow">${word}</span>`;
                 }
                 else {

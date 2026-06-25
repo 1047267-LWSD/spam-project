@@ -1,0 +1,9 @@
+{
+  "appId": "com.riya.scamproject",
+  "appName": "The Scam Project",
+  "webDir": "static",
+  "server": {
+    "url": "https://spam-project-ylde.onrender.com/",
+    "cleartext": true
+  }
+}
