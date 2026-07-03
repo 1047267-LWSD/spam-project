@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <link rel = 'stylesheet' href="{{ url_for('static', filename='styles.css') }}">
     <link rel = 'stylesheet' href="{{ url_for('static', filename='forum.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+    <link rel = 'stylesheet' href="{{ url_for('static', filename='navbar.css') }}">
     <title>Forum</title>
 </head>
 <body>
@@ -21,6 +19,7 @@
         <a href = '/detector'>Scam Detector</a>
         <a href = '/forum'>Community Forum</a>
         </div>
+    </div>
     <h1>Community Forum</h1>
     <div class = "description-box">
     <p id = 'description'>Welcome to the Community Forum! Browse through real scam messages that have been detected by others like yourself. Each post shows the message, detection confidence, and the type of scam message you’re looking at. By sharing scam messages, you help protect a community from scam messages and contribute to a growing database that improves future detection for everyone. Feel free to use the voting buttons to upvote messages you agree are scam and downvote messages that do not seem fruadulent.</p>
