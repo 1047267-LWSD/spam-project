@@ -10,7 +10,7 @@ app = Flask(__name__,
             static_folder=os.path.join(BASE_DIR, 'static'))
 @app.route('/')
 def landing():
-    return render_template('landing-page.html', active_tab = 'home')
+    return render_template('landing-page.html')
 @app.route('/free-spam')
 def free_spam():
     return render_template('free-spam.html')
@@ -25,7 +25,7 @@ def home():
     return render_template('homepage.html')
 @app.route('/detector')
 def index():
-    return render_template('index1.html', active_tab = 'detector')
+    return render_template('index1.html')
 @app.route('/predict/detect', methods = ['POST'])
 def predict():
     try:
@@ -90,7 +90,7 @@ def get_predict():
         return 'GET'
 @app.route('/forum')
 def forum():
-    return render_template('forum.html', active_tab = 'forum')
+    return render_template('forum.html')
 
 if __name__ == "__main__":
     import os
