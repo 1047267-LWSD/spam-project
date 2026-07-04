@@ -3,7 +3,7 @@
   "appName": "Watchtower",
   "webDir": "static",
   "server": {
-    "url": "http://192.168.4.27:8000/",
+    "url": "https://spam-project-ylde.onrender.com/",
     "cleartext": true
   }
 }
