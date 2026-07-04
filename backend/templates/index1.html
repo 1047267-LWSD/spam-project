@@ -8,17 +8,7 @@
     <title>Detection</title>
 </head>
 <body>
-   <div class = 'navbar'> 
-        <div class = 'logo'>
-            <img src = '/static/Logo.png'></img>
-        </div>
-        <h2 id = 'app-name'>Watchtower</h2>
-        <div class = 'nav-links'>
-        <a href = '/'>Home</a>
-        <a href = '/detector'>Scam Detector</a>
-        <a href = '/forum'>Community Forum</a>
-        </div>
-    </div>
+  
     <h1>Scam Detector</h1>
     <div class = "description-box">
      <p class = 'description'>Have you received a suspicious text message? Our AI-powered detectors with over 90% accuracy can analyze your text message and determine whether it is a scam or not. Just paste your text message or upload a screenshot, and we’ll provide you with a prediction of what type of message you’re dealing with and suspicious words in your text. <strong> Disclaimer: our predictions are not 100% accurate. Our detections are meant to provide insight on messages you receive, please use personal judgement when interpreting results.</strong></p>
@@ -55,7 +45,26 @@
     <button style = 'display:none' id = 'report'>Report to Forum</button>
     <button style = 'display:none' id = 'cancel'>Cancel</button>
     <button style = 'display:none' id = 'incorrect'>I think the model predicted incorrectly</button>
+ <div class = 'navbar'> 
+        <div class = 'logo'>
+            <img src = '/static/Logo.png'></img>
+        </div>
+        <div class = 'nav-links'>
+        <a href = '/' class="tab {{ 'active' if active_tab == 'home' }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-icon lucide-house"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            <span>Home</span>
+        </a>
+        <a href = '/detector' class="tab {{ 'active' if active_tab == 'detector' }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-alert-icon lucide-shield-alert"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+            <span>Detector</span>
+        </a>
+        <a href = '/forum' class="tab {{ 'active' if active_tab == 'forum' }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rectangle-ellipsis-icon lucide-rectangle-ellipsis"><rect width="20" height="12" x="2" y="6" rx="2"/><path d="M12 12h.01"/><path d="M17 12h.01"/><path d="M7 12h.01"/></svg>
+            <span>Forum</span>
+        </a>
 
+        </div>
+    </div>
 </body>
 <script type="module" src="{{ url_for('static', filename='script.js') }}?v=2"></script>
 <script type="module" src="{{ url_for('static', filename='firebase-config.js') }}"></script>
