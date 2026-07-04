@@ -1,3 +1,12 @@
+:root {
+  --bg: #ffffff;
+  --primary: #059669;
+  --danger: #ef4444;
+  --text: #111111;
+  --text-secondary: #666666;
+  --border: #f0f0f0;
+}
+
 body, button, input, #myFile {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
@@ -14,7 +23,7 @@ h1 {
     background-position: center;
     background-size: cover;
     padding: 100px;
-    color: white;
+    color: var(--bg);
     margin: 0 auto;
     margin-bottom: 15px;
     
@@ -29,7 +38,7 @@ h1 {
     
 }
 .description-box {
-    background-color: rgb(153, 213, 238);
+    background-color: var(--primary);
     display: flex; 
     flex-direction: column; 
     width: 100%;  
@@ -41,8 +50,8 @@ h1 {
 }
 #encouragement{
     padding: 20px;
-    color: rgb(255, 255, 255);
-    background-color: rgb(76, 195, 255);
+    color: var(--bg);
+    background-color: var(--primary);
     border-radius: 20px;
     text-decoration: none;
     align-self: center;
@@ -50,9 +59,6 @@ h1 {
     text-align: center;
 }
 
-#encouragement:hover{
-    background-color: rgb(63, 161, 209);
-}
 #option-buttons {
     display: flex;
     justify-content: center;
@@ -65,26 +71,24 @@ h1 {
     padding: 20px; 
     border: 0px;
     border-radius: 15px;
-    background-color: antiquewhite;
+    background-color: var(--primary);
     width: 100%;
     font-size: 20px;
 }
 
-#option-buttons button:hover {
-    background-color: rgb(220, 207, 191);
-}
 .upload-form {
     display: flex;
     flex-direction: column;
     padding: 15px;
     align-items: center;
     width: 50%;
-    background-color: rgb(211, 226, 255);
+    background-color: var(--text-secondary);
     margin-left: auto;
     margin-right: auto;
     border-radius: 5px;;
     margin-top: 20px;
 }
+
 #spam-input {
     width: 75%;
     height: 200px;
@@ -94,20 +98,12 @@ h1 {
 }
 
 #spam-input::placeholder{
-    color: rgb(171, 171, 171);
+    color: var(--text-secondary);
     padding: 5px;
 }
 
 #check, #customFileButton, #upload {
-    background-color: rgb(159, 193, 255);
-    border: 0px;
-    border-radius: 15px;
-    padding: 15px;
-    margin: 15px;
-}
-
-#check:hover, #customFileButton:hover, #upload:hover {
-    background-color: rgb(128, 156, 208);
+    background-color: var(--primary);
     border: 0px;
     border-radius: 15px;
     padding: 15px;
@@ -132,7 +128,7 @@ h1 {
 }
 #spam-description{
     flex-direction: column;
-    background-color: antiquewhite;
+    background-color: var(--primary);
     padding: 20px;
     border-radius: 10px;;
     margin: 15px;
@@ -148,29 +144,18 @@ h1 {
     }
 
  #report {
-    background-color: rgb(159, 193, 255);
- }
- #report:hover { 
-     background-color: rgb(128, 156, 208);
- }
-
- #incorrect:hover { 
-     background-color: rgb(128, 156, 208);
-     border: none;
-     border-radius: 15px;
+    background-color: var(--danger);
  }
 
  #incorrect {
-    background-color: rgb(159, 193, 255);
+    background-color: var(--primary);
+    border: none;
+    border-radius: 15px;
  }
 
  #cancel {
-    background-color: rgb(204, 68, 68);
-    color: white;
-}
-
-#cancel:hover {
-    background-color: rgb(140, 37, 37)
+    background-color: var(--danger);
+    color: var(--bg);
 }
 
 

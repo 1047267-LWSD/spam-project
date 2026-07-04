@@ -1,3 +1,12 @@
+:root {
+  --bg: #ffffff;
+  --primary: #059669;
+  --danger: #ef4444;
+  --text: #111111;
+  --text-secondary: #666666;
+  --border: #f0f0f0;
+}
+
 .posts{
     border: 1px solid rgb(197, 198, 198);
     padding: 5px;
