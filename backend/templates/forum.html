@@ -9,13 +9,23 @@
     <title>Forum</title>
 </head>
 <body>
-    
+<div class = 'page'>
+    <div class = 'header'>
     <h1>Community Forum</h1>
+    </div>
     <div class = "description-box">
-    <p id = 'description'>Welcome to the Community Forum! Browse through real scam messages that have been detected by others like yourself. Each post shows the message, detection confidence, and the type of scam message you’re looking at. By sharing scam messages, you help protect a community from scam messages and contribute to a growing database that improves future detection for everyone. Feel free to use the voting buttons to upvote messages you agree are scam and downvote messages that do not seem fruadulent.</p>
+    <h2 id = 'description'>Browse through real reported scam messages</h2>
     <a id = 'encouragement' href = '/detector'>Detect and report more scam messages here!</a>
     </div>
+    <div class = 'filters'> 
+        <a class = 'filter' id = 'all'> All </a>
+        <a class = 'filter'  id = 'personal'> Personal </a>
+        <a class = 'filter'  id = 'service'> Service </a>
+        <a class = 'filter'  id = 'lottery'> Lottery </a>
+        <a class = 'filter'  id = 'fake-message'> Fake Messages <a>
+    </div>
     <div id = 'post-container'></div>
+</div>
  <div class = 'navbar'> 
         <div class = 'logo'>
             <img src = '/static/Logo.png'></img>

@@ -18,17 +18,20 @@ body {
 
 
 h1 {
-    text-align: center;
-    background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/static/spam.png);
-    background-position: center;
-    background-size: cover;
-    padding: 100px;
-    color: var(--bg);
-    margin: 0 auto;
-    margin-bottom: 15px;
-    
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text);
+    margin: 0;
+    background: none;
+    text-align: left;
+    padding: 0;    
 
 }
+
+.header {
+    padding: 24px 0 20px;
+}
+
 .description {
     width: 100%;
     text-align: center;
