@@ -69,10 +69,30 @@ body {
     background-color: rgb(63, 161, 209);
 }
 
-#filter-bar {
+/* ── Filter bar ── */
+.filters {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 4px 0 12px;
+}
+
+.filter {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    background: #f0f0f0;
+    padding: 8px 14px;
+    border-radius: 999px;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.filter.active-filter {
+    background: var(--primary);
+    color: #ffffff;
 }
 
 /* ── Post feed ── */
@@ -85,6 +105,14 @@ body {
     gap: 16px;
 }
 
+.no-results {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding: 40px 20px;
+}
+
 /* ── Post card — same visual language as the homepage bento cards ── */
 .post-card {
     border-radius: 16px;
@@ -92,6 +120,7 @@ body {
     padding: 20px;
     background: var(--bg);
     transition: transform 0.15s ease, box-shadow 0.15s ease;
+    cursor: pointer;
 }
 
 .post-card:active {
@@ -121,10 +150,6 @@ body {
     font-weight: 600;
     color: var(--primary);
     margin-bottom: 14px;
-}
-
-.post-card {
-    cursor: pointer;
 }
 
 /* ── Modal ── */
@@ -251,7 +276,7 @@ body {
         padding: 8px 12px 100px;
     }
 
-    h1 { font-size: 28px !important; }
+    .header h1 { font-size: 28px !important; }
     h2 { font-size: 22px !important; }
     h3 { font-size: 18px !important; }
 }

@@ -1,4 +1,9 @@
 const container = document.getElementById('post-container');
+const all = document.getElementById('all');
+const service = document.getElementById('service');
+const personal = document.getElementById('personal');
+const lottery = document.getElementById('lottery');
+const premium_rate = document.getElementById('fake-message');
 import { collection, doc, getDocs, increment, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { db } from './firebase-config.js';
 
@@ -102,7 +107,8 @@ function ensureModal() {
 
 function openModal(response) {
    const overlay = ensureModal();
-   document.getElementById('modal-type').textContent = 'Scam Type: ' + response['type'];
+   const label = response['type'] === 'fake-message' ? 'premium rate' : response['type'];
+   document.getElementById('modal-type').textContent = 'Scam Type: ' + label;
    document.getElementById('modal-message').textContent = response['message'];
    document.getElementById('modal-date').textContent = response['time'];
    document.getElementById('modal-confidence').textContent = 'Confidence: ' + response['confidence'];
@@ -110,15 +116,68 @@ function openModal(response) {
    overlay.classList.add('open');
 }
 
+function ensureEmptyState() {
+   let empty = document.getElementById('no-results');
+   if (empty) return empty;
+
+   empty = document.createElement('div');
+   empty.id = 'no-results';
+   empty.className = 'no-results';
+   empty.textContent = 'No messages to display';
+   empty.style.display = 'none';
+   container.appendChild(empty);
+   return empty;
+}
+
+function updateEmptyState() {
+   const empty = ensureEmptyState();
+   const anyVisible = Array.from(document.querySelectorAll('.post-card'))
+      .some(card => card.style.display !== 'none');
+   empty.style.display = anyVisible ? 'none' : 'block';
+}
+
+function setupFilters() {
+   const filters = {
+      all: all,
+      service: service,
+      personal: personal,
+      lottery: lottery,
+      'fake-message': premium_rate,
+   };
+
+   Object.entries(filters).forEach(([type, link]) => {
+      if (!link) return;
+
+      link.addEventListener('click', (e) => {
+         e.preventDefault();
+
+         document.querySelectorAll('.post-card').forEach(card => {
+            const show = type === 'all' || card.dataset.type === type;
+            card.style.display = show ? '' : 'none';
+         });
+
+         Object.values(filters).forEach(l => l && l.classList.remove('active-filter'));
+         link.classList.add('active-filter');
+
+         updateEmptyState();
+      });
+   });
+}
+
 async function loadDocs() {
    const collectionRef = collection(db, 'reports');
    const docs = await getDocs(collectionRef);
    let responses = [];
+   let seenMessages = new Set();
 
    docs.forEach((d) => {
+      let message = d.data().message;
+      if (seenMessages.has(message)) return;
+      seenMessages.add(message);
+
       let docItem = {};
       docItem['id'] = d.id;
-      docItem['message'] = d.data().message;
+      docItem['message'] = message;
       docItem['prediction'] = d.data().prediction;
       docItem['confidence'] = d.data().confidence;
       docItem['type'] = d.data().type;
@@ -135,11 +194,17 @@ async function loadDocs() {
       // Outer card
       const post = document.createElement('div');
       post.className = 'post-card';
+      post.dataset.type = response['type'];
 
       // "Scam Type: X" heading
       const type = document.createElement('div');
       type.className = 'card-type';
+      if (response['type'] == 'fake-message') {
+         type.textContent = 'Scam Type: premium rate';
+      }
+      else {
       type.textContent = 'Scam Type: ' + response['type'];
+      }
 
       // Message, line-clamped to 3 lines
       const message = document.createElement('p');
@@ -203,6 +268,9 @@ async function loadDocs() {
    });
 
    votingButtons();
+   setupFilters();
+   ensureEmptyState();
+   updateEmptyState();
 }
 
 loadDocs();

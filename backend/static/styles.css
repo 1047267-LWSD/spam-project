@@ -7,208 +7,354 @@
   --border: #f0f0f0;
 }
 
-body, button, input, #myFile {
+* {
+    box-sizing: border-box;
+}
+
+body, button, input, textarea, #myFile {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
+
 body {
     margin: 0;
     padding: 0;
+    background: var(--bg);
+    color: var(--text);
 }
 
-
-
-h1 {
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--text);
-    margin: 0;
-    background: none;
-    text-align: left;
-    padding: 0;    
-
+.page {
+    padding: 20px 16px 100px;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .header {
     padding: 24px 0 20px;
 }
 
-.description {
-    width: 100%;
-    text-align: center;
-    margin: 0 auto;
-    display: block;
-    word-wrap: break-word;
-    
+.header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text);
+    margin: 0;
+    background: none;
+    text-align: left;
+    padding: 0;
 }
-.description-box {
-    background-color: var(--primary);
-    display: flex; 
-    flex-direction: column; 
-    width: 100%;  
-    padding: 20px;  
-    box-sizing: border-box; 
-    margin-bottom: 15px;    
 
-    
+.header p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 4px;
 }
-#encouragement{
+
+/* ── Shared card, matches homepage/forum ── */
+.card {
+    border-radius: 16px;
+    border: 1.5px solid var(--border);
     padding: 20px;
-    color: var(--bg);
-    background-color: var(--primary);
-    border-radius: 20px;
-    text-decoration: none;
-    align-self: center;
-    margin: 15px;
-    text-align: center;
+    background: var(--bg);
 }
 
+.description-card {
+    margin-bottom: 16px;
+}
+
+.description-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0 0 12px;
+}
+
+.description-card p:last-of-type {
+    margin-bottom: 0;
+}
+
+#encouragement {
+    display: block;
+    margin-top: 14px;
+    padding: 14px;
+    color: #ffffff;
+    background-color: var(--primary);
+    border-radius: 12px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#encouragement:hover {
+    background-color: #047a56;
+}
+
+/* ── Mode indicator ── */
 #option-buttons {
     display: flex;
-    justify-content: center;
-    gap: 200px;
-    margin: 15px;
+    margin-bottom: 16px;
 }
-
 
 #option-buttons button {
-    padding: 20px; 
-    border: 0px;
-    border-radius: 15px;
+    flex: 1;
+    padding: 16px;
+    border: none;
+    border-radius: 16px;
     background-color: var(--primary);
-    width: 100%;
-    font-size: 20px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
 }
 
+/* ── Upload / text form card ── */
 .upload-form {
     display: flex;
     flex-direction: column;
-    padding: 15px;
-    align-items: center;
-    width: 50%;
-    background-color: var(--text-secondary);
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px;;
-    margin-top: 20px;
+    align-items: stretch;
+    width: 100%;
+    padding: 20px;
+    background-color: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 16px;
 }
 
 #spam-input {
-    width: 75%;
-    height: 200px;
-    border: 0px;
-    border-radius: 2px;
-    margin-top: 10px;
+    width: 100%;
+    height: 160px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 15px;
+    resize: vertical;
 }
 
-#spam-input::placeholder{
+#spam-input::placeholder {
     color: var(--text-secondary);
-    padding: 5px;
 }
 
 #check, #customFileButton, #upload {
     background-color: var(--primary);
-    border: 0px;
-    border-radius: 15px;
-    padding: 15px;
-    margin: 15px;
-}
-
-
-#result {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin: 15px;
-}
-
-#results {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 2px;
-}
-#spam-description{
-    flex-direction: column;
-    background-color: var(--primary);
-    padding: 20px;
-    border-radius: 10px;;
-    margin: 15px;
-}
- #results button {
-    width: auto;
-    padding: 20px;
-    margin: 15px;
-    border: 0px;
-    border-radius: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    }
-
- #report {
-    background-color: var(--danger);
- }
-
- #incorrect {
-    background-color: var(--primary);
+    color: #ffffff;
     border: none;
-    border-radius: 15px;
- }
-
- #cancel {
-    background-color: var(--danger);
-    color: var(--bg);
+    border-radius: 12px;
+    padding: 14px;
+    margin-top: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
 }
 
+#fileName {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* ── Result card ── */
+#results-container {
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 4px;
+}
+
+.result-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 20px;
+}
+
+/* ── Progress circle ── */
+.verdict-circle-wrap {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin-bottom: 14px;
+}
+
+.verdict-circle {
+    width: 160px;
+    height: 160px;
+    transform: rotate(-90deg);
+}
+
+.circle-bg {
+    fill: none;
+    stroke: var(--border);
+    stroke-width: 12;
+}
+
+.circle-progress {
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 12;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.6s ease, stroke 0.3s ease;
+}
+
+.circle-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle-verdict {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.circle-percent {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.category-pill {
+    display: none;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary);
+    background: #ecfdf5;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 4px;
+}
+
+.result-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.result-actions button {
+    border: none;
+    border-radius: 12px;
+    padding: 12px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#report {
+    background-color: var(--danger);
+    color: #ffffff;
+}
+
+#incorrect {
+    background-color: #f0f0f0;
+    color: var(--text);
+}
+
+#cancel {
+    background-color: #f0f0f0;
+    color: var(--text-secondary);
+}
+
+/* ── Explanation card ── */
+#spam-description {
+    display: none;
+    flex-direction: column;
+    background-color: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.description-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.description-icon {
+    font-size: 24px;
+}
+
+.description-label {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--text);
+}
+
+#spam-description p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    margin: 0 0 10px;
+}
+
+#spam-description ul {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#spam-description li {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+/* ── Highlighted message analysis ── */
+#analyzed {
+    display: none;
+    flex-direction: column;
+    background-color: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+#analyzed h3 {
+    font-size: 15px;
+    font-weight: 800;
+    margin: 0 0 10px;
+    color: var(--text);
+}
+
+#shapped {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0 0 12px;
+}
+
+#key {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 0;
+}
 
 @media (max-width: 768px) {
-   
-    .description-box, 
-    .description {
-        padding: 20px 15px !important;
-        margin: 15px 10px !important;
-        font-size: 15px !important;
-        line-height: 1.6 !important;
-    }
-    
-   
-    button, 
-    .voice-btn,
-    a[href] button {
-        width: 100% !important;
-        min-height: 50px !important;
-        margin: 10px 0 !important;
-        padding: 15px !important;
-        font-size: 16px !important;
+    body {
+        overflow-x: hidden;
     }
 
-    .forum-post,
-    .post-content,
-    .spam-message {
-        width: calc(100% - 20px) !important;
-        margin: 10px !important;
-        padding: 15px !important;
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
+    .verdict-circle-wrap {
+        width: 140px;
+        height: 140px;
     }
-    
-    
-    p, div, span {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
-    }
-    
 
-    h1 { font-size: 26px !important; }
-    h2 { font-size: 22px !important; }
-    h3 { font-size: 18px !important; }
-   
-    input, 
-    textarea {
-        width: 100% !important;
-        padding: 12px !important;
-        font-size: 16px !important; 
+    .verdict-circle {
+        width: 140px;
+        height: 140px;
     }
+
+    .circle-verdict {
+        font-size: 19px;
+    }
+
+    .header h1 { font-size: 26px !important; }
 }
