@@ -1,9 +1,5 @@
 {
   "appId": "com.riya.scamproject",
   "appName": "Watchtower",
-  "webDir": "static",
-  "server": {
-    "url": "http://192.168.4.27:8000/",
-    "cleartext": true
-  }
+  "webDir": "www"
 }

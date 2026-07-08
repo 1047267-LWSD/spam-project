@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/homepage.css">
+    <link rel="stylesheet" href="static/navbar.css">
+    <title>Watchtower</title>
+</head>
+<body>
+
+<div class="page">
+    <div class="header">
+        <h1>Watchtower</h1>
+        <p>AI-powered scam detection</p>
+    </div>
+
+    <div class="bento">
+        <!-- Big CTA card -->
+        <a href="detector.html" class="card card-cta">
+            <div class = 'content'>
+            <div class="card-cta-text">Check a message</div>
+            <div class="card-cta-sub">Try now! AI-Powered Scam Detection</div>
+            </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-alert-icon lucide-shield-alert"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+
+        </a>
+
+    <div id="myCarousel" class="carousel">
+
+
+        <!-- Wrapper for Slides -->
+        <div id="carousel-inner"> </div>
+
+
+        <div class="carousel-indicators"></div>
+        <!-- Left and Right Controls -->
+         <div class = 'controls'>
+        <a class="carousel-control-prev" href="#myCarousel" role="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left-icon lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" role="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right-icon lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+         </div>
+        </div>
+
+        <!-- Stat cards -->
+        <div class="card card-stat">
+            <span class="card-label">Scams reported</span>
+            <span class="card-number" id="numTimes">38</span>
+        </div>
+
+        <div class="card card-stat">
+            <span class="card-label">Accuracy</span>
+            <span class="card-number">95%</span>
+        </div>
+
+        <!-- Info card -->
+        <div class="card card-info">
+            <span class="card-icon-sm">🔍</span>
+            <div>
+                <span class="card-info-title">How it works</span>
+                <span class="card-info-desc">See scam probability, category, and the specific words that triggered suspicion.</span>
+            </div>
+        </div>
+
+        <!-- Forum link card -->
+        <a href="forum.html" class="card card-forum">
+            <span class="card-icon-sm">💬</span>
+            <div>
+                <span class="card-info-title">Community Forum</span>
+                <span class="card-info-desc">See what scams other users have found.</span>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="navbar">
+    <div class="logo">
+        <img src="static/Logo.png">
+    </div>
+    <div class="nav-links">
+        <a href="index.html" class="tab active">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            <span>Home</span>
+        </a>
+        <a href="detector.html" class="tab">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+            <span>Detector</span>
+        </a>
+        <a href="forum.html" class="tab">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="12" x="2" y="6" rx="2"/><path d="M12 12h.01"/><path d="M17 12h.01"/><path d="M7 12h.01"/></svg>
+            <span>Forum</span>
+        </a>
+    </div>
+</div>
+
+<script type="module" src="static/script.js?v=2"></script>
+<script type="module" src="static/firebase-config.js"></script>
+<script type="module" src="static/landingpage.js?v=2"></script>
+</body>
+</html>
