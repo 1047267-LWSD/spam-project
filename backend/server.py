@@ -189,11 +189,11 @@ def sms_webhook():
 
     verdict = result.get('prediction', 'unknown')
     if verdict in ('spam', 'smishing'):
-        text = f"⚠️ Likely SCAM. Don't click links or reply.\nDetails: {link}"
+        text = f"⚠️ Likely SCAM. Don't click links or reply."
     elif verdict == 'ham':
-        text = f"✅ Looks safe.\nDetails: {link}"
+        text = f"✅ Looks safe."
     else:
-        text = f"🤔 Not sure — check with your tech advisor.\nDetails: {link}"
+        text = f"🤔 Not sure — check with your tech advisor."
 
     resp.message(text)
     return str(resp)
