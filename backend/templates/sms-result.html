@@ -48,7 +48,11 @@
   <p><strong>Message checked:</strong></p>
   <div class="message-box">{{ message }}</div>
 
-  <p class="confidence">Confidence: {{ "%.0f"|format(confidence * 100) }}% &middot; Type: {{ type }}</p>
+<p class="confidence">
+  Confidence: {{ "%.0f"|format(confidence * 100) }}%
+  {% if prediction == 'ham' %}safe{% elif prediction in ['spam','smishing'] %}scam{% else %}unsure{% endif %}
+  &middot; Type: {{ type }}
+</p>
 
   {% if word_contributions %}
   <div class="contributions">

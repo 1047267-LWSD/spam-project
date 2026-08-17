@@ -122,36 +122,7 @@ def lstm_predict():
         })
     except Exception as e:
         return jsonify({'Error': str(e)})
-@app.route('/predict/booster', methods=['POST'])
-def booster_predict():
-    global booster_detect
-    if booster_detect is None:
-        from pipeline_boost import boost_detect as _booster
-        booster_detect = _booster
-    try:
-        data = request.get_json(force=True)
-        text = data.get('text', '')
-        prediction = booster_detect(text)
-        return jsonify({
-            "prediction": prediction.get('prediction', 'unknown'),
-            "confidence": float(prediction.get('confidence', 0)),
-            "word_contributions": prediction.get('word_contributions', {}),
-            "type": prediction.get('spam_type', 'N/A')
-        })
-    except Exception as e:
-        return jsonify({'Error': str(e)})
-@app.route('/predict/convert', methods = ['GET', 'POST'])
-def get_predict():
-    if request.method == 'POST':
-        if 'image' not in request.files:
-            return 'No image file selected'
-        file = request.files['image']
-        if file.filename == '':
-            return 'No image detected'
-        text = img_to_text(file)
-        return jsonify({"text":text})
-    else:
-        return 'GET'
+
 @app.route('/forum')
 def forum():
     return render_template('forum.html', active_tab = 'forum')
@@ -162,7 +133,7 @@ def forum():
 def sms_webhook():
     global booster_detect
     if booster_detect is None:
-        from pipeline_boost import boost_detect as _booster
+        from pipeline import spam_detect as _booster
         booster_detect = _booster
 
     incoming_msg = (request.form.get('Body') or '').strip()
