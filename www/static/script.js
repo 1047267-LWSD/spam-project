@@ -109,6 +109,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Requests to share personal details early, before any real relationship exists'
             ]
         },
+        threatening: {
+            icon: '🚨',
+            label: 'Threat',
+            summary: 'This message shows the hallmarks of a threatening scam — impersonating an authority or using fear and urgency to pressure you into acting before you can think it through.',
+            signs: [
+                'Claims of an arrest warrant, lawsuit, or legal action against you',
+                'Impersonation of the IRS, police, immigration, or a debt collector',
+                'A tight deadline ("within 24 hours," "by 5PM today") meant to rush you',
+                'Threats to freeze accounts, seize assets, cut off service, or share private content unless you pay or respond immediately'
+            ]
+        },
         lottery: {
             icon: '🎉',
             label: 'Lottery / Prize',
