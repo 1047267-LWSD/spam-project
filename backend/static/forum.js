@@ -2,6 +2,7 @@ const container = document.getElementById('post-container');
 const all = document.getElementById('all');
 const service = document.getElementById('service');
 const personal = document.getElementById('personal');
+const threatening = document.getElementById('threatening');
 const lottery = document.getElementById('lottery');
 const premium_rate = document.getElementById('fake-message');
 import { collection, doc, getDocs, increment, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
@@ -141,6 +142,7 @@ function setupFilters() {
       all: all,
       service: service,
       personal: personal,
+      threatening: threatening,
       lottery: lottery,
       'fake-message': premium_rate,
    };
