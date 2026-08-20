@@ -31,7 +31,9 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 print(classification_report(y_test, y_pred))
 
-
+test_text = ['Your account with your water utility is past due ($1,000.00)! Service termination immediately! Prevent shutoff by calling (860) 911-1216!']
+test_vec = vectorizer.transform(test_text)
+print(model.predict(test_vec))
 filename = 'spam-categorizer.pkl'
 with open(filename, 'wb') as f:
     pkl.dump(model, f)

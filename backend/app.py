@@ -1,4 +1,7 @@
 from server import app
+from flask_cors import CORS
+CORS(app, resources={r"/predict/*": {"origins": "*"}})
+
 
 if __name__ == "__main__":
     import os
