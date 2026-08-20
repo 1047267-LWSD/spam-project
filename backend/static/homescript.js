@@ -149,6 +149,21 @@ onAuthStateChanged(auth, (user) => {
                 description.style.display = 'flex';
                 results.appendChild(description);
             }
+            else if(data.type == 'threatening') {
+                const summary = document.createElement('p');
+                summary.textContent = 'Our model has detected your message as a threatening spam message. This means your message could be showing signs of:'
+                const listofels = document.createElement('ul');
+                const element1 = document.createElement('li');
+                const element2 = document.createElement('li');
+                element1.textContent = 'Claims of an arrest warrant, lawsuit, or legal action against you';
+                element2.textContent = 'Impersonation of the IRS, police, immigration, or a debt collector';
+                listofels.appendChild(element1);
+                listofels.appendChild(element2);
+                description.appendChild(summary);
+                description.appendChild(listofels);
+                description.style.display = 'flex';
+                results.appendChild(description);
+            }
             else if (data.type == 'lottery') {
                 const summary = document.createElement('p');
                 summary.textContent = 'Our model has detected your message as a lottery or prize spam. This means your message could be showing signs of:'
